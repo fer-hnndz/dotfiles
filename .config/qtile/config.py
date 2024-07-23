@@ -6,6 +6,7 @@ from libqtile.lazy import lazy
 from settings.keys import keys
 from settings.groups import groups
 from settings.screens import screens
+from settings.widgets import widget_defaults
 
 mod = "mod4"
 terminal = "alacritty"
@@ -36,7 +37,6 @@ for i, group in enumerate(groups):
 layouts = [
     layout.MonadTall(),
     layout.Max(),
-    layout.Stack(num_stacks=2),
     # Try more layouts by unleashing below layouts.
     # layout.Bsp(),
     # layout.Matrix(),
@@ -45,11 +45,6 @@ layouts = [
     # layout.VerticalTile(),
 ]
 
-widget_defaults = dict(
-    font="sans",
-    fontsize=18,
-    padding=3,
-)
 extension_defaults = widget_defaults.copy()
 
 # Drag floating layouts.

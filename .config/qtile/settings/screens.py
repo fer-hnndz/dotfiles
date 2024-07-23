@@ -1,5 +1,4 @@
-# Antonio Sarosi
-# https://youtube.com/c/antoniosarosi
+# Based on Antonio Sarosi's dotfiles repo
 # https://github.com/antoniosarosi/dotfiles
 
 # Multimonitor support
@@ -17,7 +16,9 @@ def status_bar(widgets):
 
 screens = [Screen(top=status_bar(widgets))]
 
-xrandr = "xrandr | grep -w 'connected' | cut -d ' ' -f 2 | wc -l"
+# Autodetect available monitors and then set up the correct configuration
+# NOTE: Should reload the configuration when a monitor is connected or disconnected
+xrandr = "xrandr --auto && xrandr | grep -w 'connected' | cut -d ' ' -f 2 | wc -l"
 
 command = subprocess.run(
     xrandr,
@@ -25,6 +26,7 @@ command = subprocess.run(
     stdout=subprocess.PIPE,
     stderr=subprocess.PIPE,
 )
+
 
 if command.returncode != 0:
     error = command.stderr.decode("UTF-8")
@@ -34,5 +36,17 @@ else:
     connected_monitors = int(command.stdout.decode("UTF-8"))
 
 if connected_monitors > 1:
+    print("Setting up a dual monitor...")
+    subprocess.run(
+        "xrandr --output HDMI-1 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output eDP-1 --mode 1920x1080 --pos 0x0 --rotate normal --output DP-1 --off",
+        shell=True,
+    )
+
     for _ in range(1, connected_monitors):
         screens.append(Screen(top=status_bar(widgets)))
+else:
+    print("Setting up a single monitor...")
+    subprocess.run(
+        "xrandr --output HDMI-1 --off --output eDP-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP-1 --off",
+        shell=True,
+    )
