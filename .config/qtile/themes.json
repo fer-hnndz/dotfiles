@@ -1,0 +1,11 @@
+{
+    "base": {
+        "background": "#141115",
+        "foreground": "#FFFFFF",
+        "powerline_colors": [
+            "#642CA9",
+            "#6F9CEB",
+            "#D81E5B"
+        ]
+    }
+}

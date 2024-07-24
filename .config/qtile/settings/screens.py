@@ -8,10 +8,13 @@ from libqtile import bar
 from libqtile.log_utils import logger
 from .widgets import widgets
 import subprocess
+from .theme_manager import ThemeManager
+
+mgr = ThemeManager("base")
 
 
 def status_bar(widgets):
-    return bar.Bar(widgets, 24, opacity=0.92)
+    return bar.Bar(widgets, 24, opacity=0.92, background=mgr.get_bg())
 
 
 screens = [Screen(top=status_bar(widgets))]
