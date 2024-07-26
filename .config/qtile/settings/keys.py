@@ -11,11 +11,12 @@ keys = [
         # Window Movement
         ([mod], "j", lazy.layout.shuffle_left(), "Move Window Left"),
         ([mod], "l", lazy.layout.shuffle_right(), "Move Window Right"),
-        ([mod], "s", lazy.layout.shuffle_down(), "Move Window Down"),
+        ([mod], "k", lazy.layout.shuffle_down(), "Move Window Down"),
+        ([mod], "i", lazy.layout.shuffle_up(), "Move Window Up"),
         # App Launch
         ([mod], "Return", lazy.spawn(terminal), "Spawn a Terminal"),
         ([mod], "w", lazy.window.kill(), "Kill Window"),
-        ([alt], "space", lazy.spawn("rofi -show window"), "Opens Rofi"),
+        ([alt], "space", lazy.spawn("rofi -show combi"), "Opens Rofi"),
         # QTile Binds
         ([mod, "control"], "r", lazy.reload_config(), "Reload the config"),
         ([mod, "control"], "q", lazy.shutdown(), "Shutdown Qtile"),
