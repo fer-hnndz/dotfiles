@@ -3,6 +3,7 @@ from libqtile.lazy import lazy
 
 terminal = "alacritty"
 mod = "mod4"
+alt = "mod1"
 
 keys = [
     Key(modifier, key, command, desc=desc)
@@ -14,7 +15,7 @@ keys = [
         # App Launch
         ([mod], "Return", lazy.spawn(terminal), "Spawn a Terminal"),
         ([mod], "w", lazy.window.kill(), "Kill Window"),
-        (["shift"], "space", lazy.spawn("rofi -show window"), "Opens Rofi"),
+        ([alt], "space", lazy.spawn("rofi -show window"), "Opens Rofi"),
         # QTile Binds
         ([mod, "control"], "r", lazy.reload_config(), "Reload the config"),
         ([mod, "control"], "q", lazy.shutdown(), "Shutdown Qtile"),
@@ -26,5 +27,20 @@ keys = [
             lazy.window.toggle_fullscreen(),
             "Toggle fullscreen",
         ),
+        # Audio
+        # Volume
+        (
+            [],
+            "XF86AudioLowerVolume",
+            lazy.spawn("pamixer --decrease 5"),
+            "Lower Volume",
+        ),
+        (
+            [],
+            "XF86AudioRaiseVolume",
+            lazy.spawn("pamixer --increase 5"),
+            "Raise Volume",
+        ),
+        ([], "XF86AudioMute", lazy.spawn("pamixer --toggle-mute"), "Mute Audio"),
     ]
 ]
