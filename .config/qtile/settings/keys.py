@@ -29,7 +29,6 @@ keys = [
             "Toggle fullscreen",
         ),
         # Audio
-        # Volume
         (
             [],
             "XF86AudioLowerVolume",
@@ -43,5 +42,18 @@ keys = [
             "Raise Volume",
         ),
         ([], "XF86AudioMute", lazy.spawn("pamixer --toggle-mute"), "Mute Audio"),
+        # Brightness
+        (
+            [],
+            "XF86MonBrightnessUp",
+            lazy.spawn("brightnessctl set +15%"),
+            "Increase Brightness",
+        ),
+        (
+            [],
+            "XF86MonBrightnessDown",
+            lazy.spawn("brightnessctl set 15%-"),
+            "Decrease Brightness",
+        ),
     ]
 ]

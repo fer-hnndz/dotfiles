@@ -1,0 +1,9 @@
+[shell]
+program = "/bin/zsh"
+
+[window]
+opacity = 0.1
+blur = true
+
+[font]
+normal = { family = "Mononoki Nerd Font", style = "normal" }

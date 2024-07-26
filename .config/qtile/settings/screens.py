@@ -6,7 +6,7 @@
 from libqtile.config import Screen
 from libqtile import bar
 from libqtile.log_utils import logger
-from .widgets import widgets
+from .widgets import primary_widgets, secondary_widgets
 import subprocess
 from .theme_manager import ThemeManager
 
@@ -17,7 +17,7 @@ def status_bar(widgets):
     return bar.Bar(widgets, 24, opacity=0.92, background=mgr.get_bg())
 
 
-screens = [Screen(top=status_bar(widgets))]
+screens = [Screen(top=status_bar(primary_widgets))]
 
 # Autodetect available monitors and then set up the correct configuration
 # NOTE: Should reload the configuration when a monitor is connected or disconnected
@@ -46,7 +46,7 @@ if connected_monitors > 1:
     )
 
     for _ in range(1, connected_monitors):
-        screens.append(Screen(top=status_bar(widgets)))
+        screens.append(Screen(top=status_bar(secondary_widgets)))
 else:
     print("Setting up a single monitor...")
     subprocess.run(

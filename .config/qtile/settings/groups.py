@@ -3,4 +3,4 @@ from libqtile.config import Group, Key
 from libqtile.lazy import lazy
 
 
-groups = [Group(name) for name in ["󰘦", "", ""]]
+groups = [Group(name) for name in ["󰘦", "", "", ""]]
