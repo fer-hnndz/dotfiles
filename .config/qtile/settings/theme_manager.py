@@ -1,5 +1,17 @@
 import json
 import os
+from typing import TypedDict
+
+
+class ThemeDict(TypedDict):
+    background: str
+    foreground: str
+    group_bg: str
+    active_group_fg: str
+    active_group_bg: str
+    powerline_colors: list[str]
+    urgent_bg: str
+    urgent_fg: str
 
 
 class ThemeManager:
@@ -24,14 +36,6 @@ class ThemeManager:
             themes = json.load(file)
             self.theme_data = themes[self.theme]
 
-    def get_bg(self) -> str:
-        """Returns the background color."""
-        return self.theme_data["background"]
-
-    def get_fg(self) -> str:
-        """Returns the foreground color."""
-        return self.theme_data["foreground"]
-
-    def get_powerline_colors(self) -> list[str]:
-        """Returns the powerline colors."""
-        return self.theme_data["powerline_colors"]
+    def get_colors(self) -> ThemeDict:
+        """Returns the colors for the selected theme."""
+        return self.theme_data  # type: ignore

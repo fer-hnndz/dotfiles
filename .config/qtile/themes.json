@@ -2,10 +2,17 @@
     "base": {
         "background": "#141115",
         "foreground": "#FFFFFF",
+        "group_bg": "#141115",
+        "group_fg": "#FFFFFF",
+        "active_group_bg": "#243E36",
+        "active_group_fg": "#FFFFFF",
         "powerline_colors": [
             "#642CA9",
             "#6F9CEB",
-            "#D81E5B"
-        ]
+            "#D81E5B",
+            "#243E36"
+        ],
+        "urgent_bg": "#D81E5B",
+        "urgent_fg": "#2E282A"
     }
 }

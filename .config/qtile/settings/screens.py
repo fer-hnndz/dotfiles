@@ -10,11 +10,11 @@ from .widgets import primary_widgets, secondary_widgets
 import subprocess
 from .theme_manager import ThemeManager
 
-mgr = ThemeManager("base")
+theme = ThemeManager("base").get_colors()
 
 
 def status_bar(widgets):
-    return bar.Bar(widgets, 24, opacity=0.92, background=mgr.get_bg())
+    return bar.Bar(widgets, 24, opacity=0.92, background=theme["background"])
 
 
 screens = [Screen(top=status_bar(primary_widgets))]
