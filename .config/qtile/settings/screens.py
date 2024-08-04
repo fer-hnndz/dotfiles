@@ -41,7 +41,7 @@ else:
 if connected_monitors > 1:
     print("Setting up a dual monitor...")
     subprocess.run(
-        "xrandr --output HDMI-1 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output eDP-1 --mode 1920x1080 --scale 1.0x1.0 --pos 0x0 --rotate normal --output DP-1 --off",
+        "xrandr --output HDMI-A-0 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output eDP --mode 1920x1080 --pos 0x0 --rotate normal --output DisplayPort-0 --off",
         shell=True,
     )
 
@@ -50,6 +50,6 @@ if connected_monitors > 1:
 else:
     print("Setting up a single monitor...")
     subprocess.run(
-        "xrandr --output HDMI-1 --off --output eDP-1 --primary --mode 1920x1080 --scale 1.0x1.0 --pos 0x0 --rotate normal --output DP-1 --off",
+        "xrandr --output HDMI-A-0 --off --output eDP --primary --mode 1920x1080 --pos 1912x0 --rotate normal --output DisplayPort-0 --off",
         shell=True,
     )
