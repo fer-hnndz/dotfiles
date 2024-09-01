@@ -160,7 +160,7 @@ You may want to install GPU drivers, just in case.\
 For my specific machine, I had to install AMD Drivers.
 
 ```bash
-$ sudo pacman -S xf86-video-amdgpu
+$ sudo pacman -S xf86-video-amdgpu mesa
 ```
 
 # Extra Tools
