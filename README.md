@@ -118,13 +118,18 @@ $ nitrogen --restore &
 ```
 
 ## Audio
-Imagine using Arch with no audio. Impossible. Get some audio:
+I use [Pipewire](https://wiki.archlinux.org/title/PipeWire) for audio.
+Refer to the installation guide for setup details.
 
-```
-sudo pacman -S pulseaudio pavucontrol pamixer
+```bash
+$ sudo pacman -S pipewire pipewire-audio pipewire-pulse pipewire-alsa pipewire-jack
 ```
 
-`pulseaudio` will allow for audio support while `pavucontrol` and `pamixer` offer a GUI and CLI setup respectively. \
+To add support for volume buttons and equalizer, install `pamixer`, `pavucontrol` for a GUI and the EasyEffects equalizer.
+```bash
+$ sudo pacman -S pavucontrol pamixer easyeffects lsp-plugins
+```
+After that setup your EQ as you'd like.\
 Installing and rebooting should be enough to get audio working. Although you may have some issues.
 
 ## Brightness and Redshift
@@ -154,6 +159,7 @@ To allow gestures like scrolling and tapping, you can install [xf86-input-synapt
 ```bash
 sudo pacman -S xf86-input-synaptics
 ```
+Refer to the wiki to setup the gestures, or apply the config file in this repo.
 
 ## GPU Drivers
 You may want to install GPU drivers, just in case.\
@@ -168,10 +174,11 @@ In this section I'm going to detail some extra tools that I use in my Arch envir
 
 ## Program Launcher
 [Rofi](https://wiki.archlinux.org/title/Rofi) is a program launcher just like MacOS's Spotlight.\
+Also install some icons so it looks better with the config.
 You can install it with:
 
 ```bash
-$ sudo pacman -S rofi
+$ sudo pacman -S rofi papirus-icon-theme
 ```
 
 ## AUR Helper (yay)
@@ -242,7 +249,7 @@ $ git clone https://github.com/jirutka/zsh-shift-select.git ${ZSH_CUSTOM:-~/.oh-
 | Less                         | Pager for Git and Arch journal                 |
 |------------------------------|------------------------------------------------|
 | visual-studio-code-bin (AUR) | Propietary VsCode (for extension sync support) |
-| spotify-launcher             | ¯\_(ツ)_/¯                                     |
+| spotify-launcher             | Self-explanatory                               |
 
 
 
