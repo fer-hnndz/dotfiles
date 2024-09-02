@@ -16,7 +16,7 @@ keys = [
         # App Launch
         ([mod], "Return", lazy.spawn(terminal), "Spawn a Terminal"),
         ([mod], "w", lazy.window.kill(), "Kill Window"),
-        ([alt], "space", lazy.spawn("rofi -show combi"), "Opens Rofi"),
+        ([alt], "space", lazy.spawn("rofi -show combi -icon-theme 'Papirus' -show-icons"), "Opens Rofi"),
         # QTile Binds
         ([mod, "control"], "r", lazy.reload_config(), "Reload the config"),
         ([mod, "control"], "q", lazy.shutdown(), "Shutdown Qtile"),
