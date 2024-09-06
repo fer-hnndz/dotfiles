@@ -3,3 +3,5 @@
 	email = 65425622+fer-hnndz@users.noreply.github.com
 [core]
 	pager = less -
+[pull]
+	rebase = true
