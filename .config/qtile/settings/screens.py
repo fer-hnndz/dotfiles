@@ -40,8 +40,10 @@ else:
 
 if connected_monitors > 1:
     print("Setting up a dual monitor...")
+
+    #! NOTE: If you are not using a 100Hz display (like my current setup), switch the `--mode` flag for "1920x1080" for your monitor's resolution.
     subprocess.run(
-        "xrandr --output HDMI-A-0 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output eDP --mode 1920x1080 --pos 0x0 --rotate normal --output DisplayPort-0 --off",
+        "xrandr --output HDMI-A-0 --primary --mode 1920x1080_100.00 --pos 1920x0 --rotate normal --output eDP --mode 1920x1080 --pos 0x0 --rotate normal --output DisplayPort-0 --off",
         shell=True,
     )
 
