@@ -1,9 +1,9 @@
+[General]
+TerminalApplication=alacritty
+
 [KDE]
 ShowDeleteCommand=false
 
 [PreviewSettings]
 EnableRemoteFolderThumbnail=false
 MaximumRemoteSize=0
-
-[General]
-TerminalApplication=alacritty
