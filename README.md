@@ -32,8 +32,7 @@ $ systemctl enable networkmanager.service
 
 # Make sure to setup correctly the sudoers file and add the your user to it.
 
-# Use nano (my preffered console text editor) to edit the sudoers file.
-$ export EDITOR=nano;
+$ export EDITOR=nvim;
 $ visudo
 ```
 
@@ -54,10 +53,10 @@ My to-go Window Manager is QTile. Simple enough for me.\
 It may happen that some fonts are not displayed correctly, to fix this try to install some fonts:
 
 ```bash
-$ sudo pacman -S ttf-dejavu ttf-liberation noto-fonts
+$ sudo pacman -S ttf-dejavu ttf-liberation noto-fonts noto-fonts-cjk
 ```
 
-Before installing QTile, since my configuration uses a Nerd Font (mononoki), install that too.
+Before running my custom config in QTile, install the mononoki nerd font that my config uses for icons.
 
 ```bash
 $ sudo pacman -S firefox unzip
@@ -132,6 +131,8 @@ $ sudo pacman -S pavucontrol pamixer easyeffects lsp-plugins
 After that setup your EQ as you'd like.\
 Installing and rebooting should be enough to get audio working. Although you may have some issues.
 
+> You can also apply the preset located in `extra-config`. Move it to `~/.config/easyeffects/output` and select it in the EasyEffects GUI.
+
 ## Brightness and Redshift
 
 You may be using a laptop, so to take care of your eyes, you may want to control the brightness of your screen.
@@ -159,7 +160,7 @@ To allow gestures like scrolling and tapping, you can install [xf86-input-synapt
 ```bash
 sudo pacman -S xf86-input-synaptics
 ```
-Refer to the wiki to setup the gestures, or apply the config file in this repo.
+Refer to the wiki to setup the gestures, or copy the `70-synaptics.conf` file located in `extra-config` to `/etc/X11/xorg.conf.d/`.
 
 ## GPU Drivers
 You may want to install GPU drivers, just in case.\
@@ -167,6 +168,23 @@ For my specific machine, I had to install AMD Drivers.
 
 ```bash
 $ sudo pacman -S xf86-video-amdgpu mesa
+```
+
+## Setting up suspend on lid close
+To enable suspend on lid close, install acpid and enable the service.
+
+
+```bash
+$ sudo pacman -S acpid
+$ sudo systemctl enable acpid
+$ sudo systemctl start acpid
+```
+
+Then, copy the file `logind.conf` located in `extra-config` to `/etc/systemd/`. And restart the service.
+
+```bash
+$ sudo cp logind.conf /etc/systemd/
+$ sudo systemctl restart systemd-logind
 ```
 
 # Extra Tools
@@ -193,12 +211,11 @@ $ cd yay
 $ makepkg -si
 ```
 
-
 ## Applets
-I use only really need 2 applets, one for the volume and other for the network.
 
+Easily control the network with an applet.
 ```bash
-$ sudo pacman -S network-manager-applet volumeicon
+$ sudo pacman -S network-manager-applet
 ```
 
 Then in my `.xprofile` I start the applets.
@@ -206,12 +223,15 @@ Then in my `.xprofile` I start the applets.
 ```bash
 ...
 volumeicon &
-nm-applet &
 ...
 ```
 
 ## Notification Support
 
+First, install the required dependencies for notifications. \
+Then, copy the file called `org.freedesktop.Notifications.service` located in `extra-config` to `/usr/share/dbus-1/services`
+
+Or do it manually like so:
 ```bash
 $ sudo pacman -S libnotify notification-daemon
 $ sudo nano /usr/share/dbus-1/services/org.freedesktop.Notifications.service
@@ -249,7 +269,9 @@ $ git clone https://github.com/jirutka/zsh-shift-select.git ${ZSH_CUSTOM:-~/.oh-
 | Less                         | Pager for Git and Arch journal                 |
 |------------------------------|------------------------------------------------|
 | visual-studio-code-bin (AUR) | Propietary VsCode (for extension sync support) |
-| spotify-launcher             | Self-explanatory                               |
+| spotify-launcher             | ¯\_(ツ)_/¯                                     |
+| Dolphin                      | File Manager                                   |
+| Discord                      | Chat                                           |
 
 
 
