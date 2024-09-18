@@ -24,8 +24,8 @@ class ThemeManager:
         Refer to themes.json for available themes.
     """
 
-    def __init__(self, theme: str = "base"):
-        self.theme = theme
+    def __init__(self):
+        self.theme = "chrome" # Select theme here
         self.theme_data: dict = {}
         self._load_colors()
 

@@ -7,7 +7,7 @@ widget_defaults = {
     "padding": 3,
 }
 
-theme = ThemeManager("base").get_colors()
+theme = ThemeManager().get_colors()
 
 # ============= Widget Functions =============
 
@@ -20,7 +20,6 @@ def powerline(fg=theme["foreground"], bg=theme["background"]):
         fontsize=70,
         padding=-14,  # Icon: nf-oct-triangle_left
     )
-
 
 def separator():
     return widget.Sep(

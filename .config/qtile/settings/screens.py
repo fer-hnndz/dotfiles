@@ -10,7 +10,7 @@ from .widgets import primary_widgets, secondary_widgets
 import subprocess
 from .theme_manager import ThemeManager
 
-theme = ThemeManager("base").get_colors()
+theme = ThemeManager().get_colors()
 
 
 def status_bar(widgets):
