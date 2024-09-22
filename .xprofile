@@ -4,3 +4,4 @@ picom --fade-in-step=1 --fade-out-step=1 --fade-delta=0 &
 nitrogen --restore &
 redshift-gtk -l 15:-88 &
 easyeffects --gapplication-service &
+xautolock -time 10 -locker "~/xautolock-suspend.sh"
