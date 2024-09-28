@@ -17,11 +17,13 @@ keys = [
         ([mod], "Return", lazy.spawn(terminal), "Spawn a Terminal"),
         ([mod], "w", lazy.window.kill(), "Kill Window"),
         ([alt], "space", lazy.spawn("rofi -show combi -icon-theme 'Papirus' -show-icons"), "Opens Rofi"),
+        ([mod], "e", lazy.spawn("dolphin"), "Opens Dolphin"),
         # QTile Binds
         ([mod, "control"], "r", lazy.reload_config(), "Reload the config"),
         ([mod, "control"], "q", lazy.shutdown(), "Shutdown Qtile"),
         ([mod], "r", lazy.spawncmd(), "Spawn a command using a prompt widget"),
         ([mod], "Tab", lazy.next_layout(), "Toggle between layouts"),
+        # System Binds
         (
             [mod],
             "f",
