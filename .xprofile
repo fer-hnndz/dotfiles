@@ -5,4 +5,5 @@ nitrogen --restore &
 redshift-gtk -l 15:-88 &
 easyeffects --gapplication-service &
 xautolock -time 5 -locker "~/xautolock-suspend.sh" -corners 000- &
+flameshot &
 battery-advisor &

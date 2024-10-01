@@ -55,13 +55,16 @@ def groups():
 primary_widgets = [
     *groups(),
     widget.Spacer(),
+
     # Powerline for the systray
-    powerline(fg=theme["powerline_colors"][2], bg=theme["background"]),
-    widget.Systray(background=theme["powerline_colors"][2]),
+    # powerline(fg=theme["powerline_colors"][2], bg=theme["background"]),
+    # widget.Systray(background=theme["powerline_colors"][2]),
+
     # Layout Powerline
     powerline(fg=theme["powerline_colors"][3]),
     widget.TextBox(background=theme["powerline_colors"][3], text=" ", fontsize=20),
     widget.CurrentLayout(background=theme["powerline_colors"][3]),
+
     # Battery Powerline
     powerline(bg=theme["background"], fg=theme["powerline_colors"][0]),
     widget.Battery(
@@ -80,6 +83,12 @@ primary_widgets = [
 secondary_widgets = [
     *groups(),
     widget.Spacer(),
+
+    # Layout Powerline
+    powerline(fg=theme["powerline_colors"][3]),
+    widget.TextBox(background=theme["powerline_colors"][3], text=" ", fontsize=20),
+    widget.CurrentLayout(background=theme["powerline_colors"][3]),
+ 
     # Battery Powerline
     powerline(bg=theme["background"], fg=theme["powerline_colors"][0]),
     widget.Battery(
@@ -90,6 +99,7 @@ secondary_widgets = [
         format=" {char} {percent:2.0%} ",
         background=theme["powerline_colors"][0],
     ),
+
     # Clock Powerline
     powerline(bg=theme["background"], fg=theme["powerline_colors"][1]),
     widget.Clock(format="%d/%m/%y %H:%M", background=theme["powerline_colors"][1]),
