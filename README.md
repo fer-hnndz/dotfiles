@@ -20,6 +20,7 @@ This is a collection of configuration files for my Arch installation.
         - [Turn off monitor after idle](#Turn-off-monitor-after-idle)
         - [Suspend after Idle](#Suspend-after-Idle)
     8. [Session Locker](#Session-Locker)
+    9. [Battery Alerts](#Battery-Alerts)
 5. [Extra Tools](#Extra-Tools)
     1. [Program Launcher](#Program-Launcher)
     2. [AUR Helper (yay)](#AUR-Helper-(yay))
@@ -241,6 +242,22 @@ $ sudo systemctl start slock@user.service`
 ```
 
 > NOTE: Replace user with your username.
+## Battery Alerts
+
+To add alerts when battery is low I use [battery-advisor](https://github.com/fer-hnndz/battery-advisor) \
+And by the way, I created this package :).
+
+```bash
+yay -S battery-advisor
+```
+
+Then, in my `.xprofile` I start the service.
+
+```bash
+...
+battery-advisor &
+...
+```
 
 # Extra Tools
 In this section I'm going to detail some extra tools that I use in my Arch environment that speed up my workflow.
