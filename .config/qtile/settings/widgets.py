@@ -56,9 +56,9 @@ primary_widgets = [
     *groups(),
     widget.Spacer(),
 
-    # Powerline for the systray
-    # powerline(fg=theme["powerline_colors"][2], bg=theme["background"]),
-    # widget.Systray(background=theme["powerline_colors"][2]),
+    # System Tray
+    powerline(fg=theme["powerline_colors"][2], bg=theme["background"]),
+    widget.Systray(background=theme["powerline_colors"][2]),
 
     # Layout Powerline
     powerline(fg=theme["powerline_colors"][3]),

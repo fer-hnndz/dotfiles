@@ -2,32 +2,39 @@
 
 This is a collection of configuration files for my Arch installation.
 
-Special thanks to [@AntonioSarosi](https://github.com/antoniosarosi/dotfiles) who I reffered from to make my own QTile configuration and other program choices.
 
 # Table of Contents
-1. [Post Arch Installation](#post-arch-installation)
-2. [Qtile and Login](#qtile-and-login)
-   - [Setting up `dotfiles`](#setting-up-dotfiles)
-3. [Building the Basic Environment](#building-the-basic-environment)
-   - [Wallpapers](#wallpapers)
-   - [Audio](#audio)
-   - [Brightness and Redshift](#brightness-and-redshift)
-   - [Monitor Setup](#monitor-setup)
-   - [Trackpad Gestures](#trackpad-gestures)
-   - [GPU Drivers](#gpu-drivers)
-4. [Extra Tools](#extra-tools)
-   - [Program Launcher](#program-launcher)
-   - [AUR Helper (yay)](#aur-helper-yay)
-   - [Applets](#applets)
-   - [Notification Support](#notification-support)
-   - [OhMyZsh](#ohmyzsh)
-5. [Extra Software](#extra-software)
+1. [Pre-Installation](#Pre-Installation)
+2. [Post Arch Installation](#Post-Arch-Installation)
+3. [QTile and Login](#QTile-and-Login)
+4. [Building the Basic Environment](#Building-the-Basic-Environment)
+    1. [Wallpapers](#Wallpapers)
+    2. [Audio](#Audio)
+        - [Equalizer](#Equalizer)
+    3. [Brightness and Redshift](#Brightness-and-Redshift)
+    4. [Monitor Setup](#Monitor-Setup)
+    5. [Trackpad Gestures](#Trackpad-Gestures)
+    6. [GPU Drivers](#GPU-Drivers)
+    7. [Fixing Suspend (sleep) issues](#Fixing-Suspend-(sleep)-issues)
+        - [Suspend on Lid Close](#Suspend-on-Lid-Close)
+        - [Turn off monitor after idle](#Turn-off-monitor-after-idle)
+        - [Suspend after Idle](#Suspend-after-Idle)
+    8. [Session Locker](#Session-Locker)
+5. [Extra Tools](#Extra-Tools)
+    1. [Program Launcher](#Program-Launcher)
+    2. [AUR Helper (yay)](#AUR-Helper-(yay))
+    3. [Applets](#Applets)
+    4. [Notification Support](#Notification-Support)
+    5. [OhMyZsh](#OhMyZsh)
+6. [Extra Software](#Extra-Software)
+
+
 
 # Post Arch Installation
 After installing Arch on the live USB make sure you have installed some utilites for later.
 
 ```bash
-$ pacman -S networkmanager nano sudo git
+$ pacman -S networkmanager neovim sudo git
 $ systemctl enable networkmanager.service
 
 # Make sure to setup correctly the sudoers file and add the your user to it.
@@ -89,16 +96,15 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 Once you have added the alias, clone the dotfiles repository.
 
 ```bash
-$ git clone --bare https://github.com/fer-hnndz/dotfiles.git $HOME/.dotfiles
+$ git clone --bare git@github.com:fer-hnndz/dotfiles.git $HOME/.dotfiles
 $ dotfiles config --local status.showUntrackedFiles no
 $ dotfiles checkout
 
 # Probably some files are going to exist, so you may want to backup them and then retry checkout.
 ```
-> NOTE: Before reloading QTile with my configuration, make sure to install necessary programs.
-> ```bash
->$ sudo pacman -S zsh alacritty rofi xorg-xrandr arandr xf86-input-synaptics
->```
+
+> NOTE: Before reloading my configuration as is. Make sure to install the necessary tools for the config to work.\
+> These are detailed in the following sections.
 
 # Building the Basic Environment
 In this section I'm going to details the tools I use in my Arch environment. \
@@ -106,7 +112,7 @@ Some may be previously installed if you bared cloned this repository.
 
 ## Wallpapers
 
-For the wallpapers I prefer using `nitrogen`.
+For the wallpapers I prefer using [nitrogen](https://wiki.archlinux.org/title/Nitrogen).
 ```bash
 $ sudo pacman -S nitrogen
 $ nitrogen /path/to/wallpapers/dir
@@ -124,18 +130,27 @@ Refer to the installation guide for setup details.
 $ sudo pacman -S pipewire pipewire-audio pipewire-pulse pipewire-alsa pipewire-jack
 ```
 
-To add support for volume buttons and equalizer, install `pamixer`, `pavucontrol` for a GUI and the EasyEffects equalizer.
+To add control via CLI or GUI install `pamixer` and`pavucontrol` respectively.
 ```bash
-$ sudo pacman -S pavucontrol pamixer easyeffects lsp-plugins
+$ sudo pacman -S pavucontrol pamixer
 ```
-After that setup your EQ as you'd like.\
-Installing and rebooting should be enough to get audio working. Although you may have some issues.
+Installing and rebooting should be enough to get audio working.
 
-> You can also apply the preset located in `extra-config`. Move it to `~/.config/easyeffects/output` and select it in the EasyEffects GUI.
+### Equalizer
+I use `EasyEffects`. I've also included some presets in the `extra-config` folder. \
+To apply the presets, move them to `~/.config/easyeffects/output` and select them in the EasyEffects GUI.
+
+For equalizer effects to work, install these plugins:
+- calf
+- lsp-plugins
+
+```bash
+$ sudo pacman -S easyeffects calf lsp-plugins
+```
 
 ## Brightness and Redshift
 
-You may be using a laptop, so to take care of your eyes, you may want to control the brightness of your screen.
+To control the brightness of the screen, you can use `brightnessctl`.\
 You can also install [redshift](https://wiki.archlinux.org/title/Redshift) to control the color temperature of your screen.
 
 ```bash
@@ -145,14 +160,14 @@ $ redshift -l LAT:LON
 
 ## Monitor Setup
 `xrandr` allows for CLI support to edit monitor orientation.
-My QTile config automatically setups the monitor positions based on how I currently use my laptop and monitor. \
-To install both tools:
+My QTile config automatically setups the monitor positions based on how I currently use my laptop and monitor.
 
 ```bash
+# Install tools
 sudo pacman -S xorg-xrandr arandr
 ```
 
-If you ever want to change the monitor orientation, use `arandr` and copy the script for `xrandr`.
+If you ever want to change the monitor orientation, use `arandr` and copy the script for `xrandr`, then paste it on the `screens.py` file accordingly on `~/.config/qtile/`.
 
 ## Trackpad Gestures
 To allow gestures like scrolling and tapping, you can install [xf86-input-synaptics](https://wiki.archlinux.org/title/Touchpad_Synaptics).
@@ -170,9 +185,10 @@ For my specific machine, I had to install AMD Drivers.
 $ sudo pacman -S xf86-video-amdgpu mesa
 ```
 
-## Setting up suspend on lid close
-To enable suspend on lid close, install acpid and enable the service.
+## Fixing Suspend (sleep) issues
 
+### Suspend on Lid Close
+To enable suspend on lid close, install acpid and enable the service.
 
 ```bash
 $ sudo pacman -S acpid
@@ -186,6 +202,45 @@ Then, copy the file `logind.conf` located in `extra-config` to `/etc/systemd/`. 
 $ sudo cp logind.conf /etc/systemd/
 $ sudo systemctl restart systemd-logind
 ```
+
+### Turn off monitor after idle
+
+I like to turn off the monitors without suspending the system after idling.\
+There's a section about [Display Power Management Signaling (DPMS) specially for Xorg](https://wiki.archlinux.org/title/Display_Power_Management_Signaling#Xorg).
+
+To apply the settings, copy the file `10-serverflags.conf` located in `extra-config` to `/etc/X11/xorg.conf.d/10-serverflags.conf`.
+
+### Suspend after Idle
+
+I use `xautolock` to suspend the system after a certain amount of time.
+
+```bash
+$ sudo pacman -S xautolock
+```
+
+Then, in my `.xprofile` I start the service.
+
+```bash
+...
+# Set bottom right corner as a position where system won't sleep
+xautolock -time 5 -locker "~/xautolock-suspend.sh" -corners 000- &
+...
+```
+
+## Session Locker
+
+I use [slock](https://wiki.archlinux.org/title/Slock) to lock the session.
+
+I also set up a service to suspend the system after a certain amount of time.
+
+Copy `slock@.service` located in `extra-config` to `/etc/systemd/system/`.
+Then, enable the service.
+```bash
+$ sudo systemctl enable slock@user.service`
+$ sudo systemctl start slock@user.service`
+```
+
+> NOTE: Replace user with your username.
 
 # Extra Tools
 In this section I'm going to detail some extra tools that I use in my Arch environment that speed up my workflow.
@@ -222,7 +277,7 @@ Then in my `.xprofile` I start the applets.
 
 ```bash
 ...
-volumeicon &
+nm-applet &
 ...
 ```
 
@@ -265,14 +320,17 @@ $ git clone https://github.com/jirutka/zsh-shift-select.git ${ZSH_CUSTOM:-~/.oh-
 ```
 
 # Extra Software
+A list of software that I use in my environment, but that is not necessary for the configuration to work, or no detailed explanation for setup is needed.
 
-| Less                         | Pager for Git and Arch journal                 |
+
+| Software                     | Description                                    |
 |------------------------------|------------------------------------------------|
-| visual-studio-code-bin (AUR) | Propietary VsCode (for extension sync support) |
-| spotify-launcher             | ¯\_(ツ)_/¯                                     |
 | Dolphin                      | File Manager                                   |
+| Less                         | Pager for Git and Arch journal                 |
+| visual-studio-code-bin (AUR) | Propietary VsCode (for extension sync support) |
+| spotify (AUR)                | ¯\_(ツ)_/¯                                     |
 | Discord                      | Chat                                           |
-
+| Flameshot                    | Screenshot tool                                |
 
 
 
