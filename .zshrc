@@ -78,7 +78,7 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 autoload -Uz compinit && compinit
 export LANG=en_US.UTF-8
-export EDITOR='nano'
+export EDITOR='nvim'
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
