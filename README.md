@@ -183,7 +183,7 @@ You may want to install GPU drivers, just in case.\
 For my specific machine, I had to install AMD Drivers.
 
 ```bash
-$ sudo pacman -S xf86-video-amdgpu mesa
+$ sudo pacman -S xf86-video-amdgpu mesa vulkan-radeon
 ```
 
 ## Fixing Suspend (sleep) issues
