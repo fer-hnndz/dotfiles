@@ -21,6 +21,7 @@ This is a collection of configuration files for my Arch installation.
         - [Suspend after Idle](#Suspend-after-Idle)
     8. [Session Locker](#Session-Locker)
     9. [Battery Alerts](#Battery-Alerts)
+    10. [Boot Screen](#Boot-Screen)
 5. [Extra Tools](#Extra-Tools)
     1. [Program Launcher](#Program-Launcher)
     2. [AUR Helper (yay)](#AUR-Helper-(yay))
@@ -259,6 +260,14 @@ battery-advisor &
 ...
 ```
 
+## Boot Screen
+
+I use [Plymouth](https://wiki.archlinux.org/title/Plymouth) as my boot screen.
+
+To apply the configuration, copy the file `plymouthd.conf` located in `extra-config` to `/etc/plymouth/`. \
+Also, make sure to copy `mkinitcpio.conf` to `/etc/` and run `sudo mkinitcpio -P` to apply the changes.
+
+
 # Extra Tools
 In this section I'm going to detail some extra tools that I use in my Arch environment that speed up my workflow.
 
@@ -350,9 +359,72 @@ A list of software that I use in my environment, but that is not necessary for t
 | Flameshot                    | Screenshot tool                                |
 
 
+# List of all installed packages
 
+A detailed list of all the packages currently installed on my system.
 
+# Pacman
 
+| Package | Description |
+| ------- | ----------- |
+| acpi | Manage ACPI events |
+| alacritty | Terminal emulator of choice |
+| amd-ucode | Microcode for AMD processors |
+| arandr | XRandR GUI |
+| brightnessctl | Control screen brightness |
+| calf | Equalizer plugins |
+| discord | Chat |
+| dolphin | File Manager |
+| easyeffects | Equalizer |
+| filelight | Disk usage visualizer |
+| firefox | Browser |
+| flameshot | Screenshot tool |
+| git | Version control |
+| htop | System monitor |
+| lightdm | Display manager |
+| lightdm-gtk-greeter | LightDM greeter |
+| lsp-plugins | Equalizer plugins |
+| mesa | GPU drivers |
+| neofetch | System info |
+| neovim | Text editor |
+| network-manager-applet | Network manager applet |
+| networkmanager | Network manager |
+| nitrogen | Wallpaper manager |
+| notification-daemon | Notification service |
+| noto-fonts | Fonts |
+| noto-fonts-cjk | Fonts |
+| openssh | Secure shell |
+| pamixer | PulseAudio mixer |
+| papirus-icon-theme | Icon theme for Rofi |
+| pavucontrol | PulseAudio volume control |
+| picom | Compositor |
+| pipewire-alsa | Audio support |
+| pipewire-pulse | Audio support |
+| plymouth | Boot screen |
+| python-poetry | Python package manager |
+| qtile | Window manager |
+| redshift | Screen color temperature |
+| rofi | Program launcher |
+| slock | Session locker |
+| sudo | Superuser do |
+| ttf-dejavu | Fonts |
+| ttf-liberation | Fonts |
+| unzip | Unzip tool |
+| vulkan-radeon | GPU drivers |
+| xautolock | Screen locker |
+| xclip | Clipboard |
+| xf86-input-synaptics | Touchpad |
+| xf86-video-amdgpu | GPU drivers |
+| xf86-video-vesa | GPU drivers |
+| xterm | Terminal for initial setup |
+
+# AUR
+
+| Package | Description |
+| ------- | -----------|
+| battery-advisor | Battery alerts |
+| spotify | Music |
+| visual-studio-code-bin | Text editor |
 
 
 
