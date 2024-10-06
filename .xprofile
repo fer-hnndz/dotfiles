@@ -3,7 +3,7 @@
 setxkbmap -layout us,us -variant ,intl -option 'grp:alt_shift_toggle' &
 
 # Weird stuff to disable some picom fade-ins.
-picom --fade-in-step=1 --fade-out-step=1 --fade-delta=0 &
+picom --fade-in-step=1 --fade-out-step=1 --fade-delta=0 --no-fading-openclose --no-vsync --backend glx &
 
 # Yes, you can track me down with these coordinates. Whatever.
 redshift-gtk -l 15:-88 &
