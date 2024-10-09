@@ -1,4 +1,5 @@
 acpi
+acpid
 alacritty
 amd-ucode
 arandr
@@ -15,13 +16,16 @@ filelight
 firefox
 flameshot
 git
+gnome-keyring
 htop
+java-runtime-common
 lightdm
 lightdm-gtk-greeter
 linux
 linux-firmware
 lsp-plugins
 mesa
+minecraft-launcher
 neofetch
 neovim
 network-manager-applet
@@ -32,6 +36,7 @@ noto-fonts
 noto-fonts-cjk
 noto-fonts-emoji
 openssh
+pacman-contrib
 pamixer
 papirus-icon-theme
 pavucontrol
@@ -47,12 +52,12 @@ rofi
 rofi-calc
 slock
 spotify
-steam
 sudo
 ttf-dejavu
 ttf-liberation
 unzip
 visual-studio-code-bin
+volumeicon
 vulkan-radeon
 xautolock
 xclip
@@ -107,6 +112,7 @@ xorg-xwd
 xorg-xwininfo
 xorg-xwud
 xterm
+yarn
 yay
 yay-debug
 zip

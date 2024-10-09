@@ -131,6 +131,7 @@ Refer to the installation guide for setup details.
 ```bash
 $ sudo pacman -S pipewire pipewire-audio pipewire-pulse pipewire-alsa pipewire-jack
 ```
+> **Install volumeicon and add it to your .xprofile to have a volume icon in the tray.**
 
 To add control via CLI or GUI install `pamixer` and`pavucontrol` respectively.
 ```bash
