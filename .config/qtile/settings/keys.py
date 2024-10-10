@@ -19,6 +19,7 @@ keys = [
         ([alt], "space", lazy.spawn("rofi -show combi -icon-theme 'Papirus' -show-icons"), "Opens Rofi"),
         ([mod], "e", lazy.spawn("dolphin"), "Opens Dolphin"),
         ([mod], "c", lazy.spawn("rofi -show calc -modi calc -no-show-match -no-sort"), "Opens Rofi Calculator"),
+        ([mod], "l", lazy.spawn("slock"), "Locks the system with slock"),
         # QTile Binds
         ([mod, "control"], "r", lazy.reload_config(), "Reload the config"),
         ([mod, "control"], "q", lazy.shutdown(), "Shutdown Qtile"),
