@@ -10,7 +10,7 @@ redshift-gtk -l 15:-88 &
 easyeffects --gapplication-service &
 
 # Set bottom right corner as a position where system won't sleep
-xautolock -time 5 -locker "systemctl suspend-then-hibernate" -corners 000- &
+xautolock -time 5 -locker "systemctl suspend" -corners 000- &
 
 # Apps + Applets
 flameshot &

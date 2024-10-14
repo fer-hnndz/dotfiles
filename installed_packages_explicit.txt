@@ -9,6 +9,8 @@ battery-advisor
 brightnessctl
 calf
 discord
+docker
+docker-compose
 dolphin
 easyeffects
 efibootmgr
@@ -16,6 +18,7 @@ filelight
 firefox
 flameshot
 git
+gitkraken
 gnome-keyring
 htop
 java-runtime-common
@@ -24,6 +27,7 @@ lightdm-gtk-greeter
 linux
 linux-firmware
 lsp-plugins
+mariadb
 mesa
 minecraft-launcher
 neofetch
@@ -44,6 +48,8 @@ picom
 pipewire-alsa
 pipewire-pulse
 plymouth
+postgresql
+postman-bin
 python-poetry
 qtile
 redshift
@@ -59,6 +65,7 @@ unzip
 visual-studio-code-bin
 volumeicon
 vulkan-radeon
+whatsdesk-bin
 xautolock
 xclip
 xf86-input-synaptics
