@@ -17,11 +17,13 @@ efibootmgr
 filelight
 firefox
 flameshot
+gedit
 git
 gitkraken
 gnome-keyring
 htop
 java-runtime-common
+jdk-openjdk
 lightdm
 lightdm-gtk-greeter
 linux
@@ -30,6 +32,7 @@ lsp-plugins
 mariadb
 mesa
 minecraft-launcher
+mycli
 neofetch
 neovim
 network-manager-applet
@@ -39,6 +42,7 @@ notification-daemon
 noto-fonts
 noto-fonts-cjk
 noto-fonts-emoji
+npm
 openssh
 pacman-contrib
 pamixer
