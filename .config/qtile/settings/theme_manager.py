@@ -25,7 +25,7 @@ class ThemeManager:
     """
 
     def __init__(self):
-        self.theme = "chrome" # Select theme here
+        self.theme = "base" # Select theme here
         self.theme_data: dict = {}
         self._load_colors()
 
