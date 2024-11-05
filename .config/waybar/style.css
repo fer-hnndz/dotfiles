@@ -84,13 +84,6 @@ button:hover {
     padding: 0 6px;
 }
 
-#network {
-    background-color: #e9c46a;
-    border-radius: 9999px;
-    margin: 6 2px;
-    padding: 1 4px;
-}
-
 /*Group Colors*/
 
 #data,
@@ -113,7 +106,15 @@ button:hover {
 }
 
 #data {
-    background-color: #f4a261;
+    background-color: #e9c46a;
+}
+
+#clock {
+    padding: 1 4px;
+    margin: 6 2px;
+    border-radius: 9999px;
+    background-color: white;
+    color: black;
 }
 
 #window,
@@ -123,7 +124,7 @@ button:hover {
 
 
 #idle-inhibitor {
-    padding: 1 8px;
+    padding: 4 8px;
 }
 
 @keyframes blink {
