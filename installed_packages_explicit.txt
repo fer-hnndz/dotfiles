@@ -18,6 +18,7 @@ galculator
 gedit
 git
 htop
+hypridle
 hyprland
 hyprlock
 kitty
@@ -54,7 +55,6 @@ sddm
 sddm-kcm
 spotify
 sudo
-swaylock
 swww
 ttf-dejavu
 ttf-font-awesome
