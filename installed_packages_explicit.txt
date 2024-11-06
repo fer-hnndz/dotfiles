@@ -5,8 +5,11 @@ bluez
 brightnessctl
 calf
 cliphist
+cmake
+cpio
 discord
 docker
+docker-compose
 dolphin
 easyeffects
 filelight
@@ -16,6 +19,7 @@ gedit
 git
 htop
 hyprland
+hyprlock
 kitty
 less
 linux
@@ -23,6 +27,7 @@ linux-firmware
 lsp-plugins
 mako
 mesa
+meson
 neofetch
 neovim
 network-manager-applet
@@ -51,6 +56,7 @@ spotify
 sudo
 swaylock
 swww
+ttf-dejavu
 ttf-font-awesome
 unzip
 visual-studio-code-bin
