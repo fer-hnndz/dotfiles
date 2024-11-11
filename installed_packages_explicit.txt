@@ -12,6 +12,7 @@ docker
 docker-compose
 dolphin
 easyeffects
+evtest
 filelight
 firefox
 galculator
@@ -23,6 +24,7 @@ hyprland
 hyprlock
 kitty
 less
+libreoffice-fresh
 linux
 linux-firmware
 lsp-plugins
@@ -36,6 +38,7 @@ networkmanager
 noto-fonts
 noto-fonts-cjk
 noto-fonts-emoji
+obs-studio
 openssh
 pamixer
 papirus-icon-theme
@@ -67,6 +70,7 @@ wl-clipboard
 wlsunset
 xdg-desktop-portal-hyprland
 xf86-video-amdgpu
+yarn
 yay
 yay-debug
 zsh
