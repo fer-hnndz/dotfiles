@@ -68,7 +68,7 @@ My setup is:
 - [kitty](https://wiki.archlinux.org/title/Kitty) (Terminal)
 
 ```bash
-$ sudo pacman -S hyprland sddm kitty waybar qt5-wayland qt6-wayland wl-clipboard xdg-desktop-portal-hyprland qt5-graphicaleffects qt5-quickcontrols2
+$ sudo pacman -S hyprland sddm kitty waybar qt5-wayland qt6-wayland wl-clipboard cliphist xdg-desktop-portal-hyprland qt5-graphicaleffects qt5-quickcontrols2
 $ sudo systemctl enable sddm.service
 
 # You may want to reboot so ligthdm launches Hyprland on the next boot.
