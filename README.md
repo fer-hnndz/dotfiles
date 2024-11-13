@@ -48,7 +48,7 @@ Refer to [rEFInd Installation](https://wiki.archlinux.org/title/REFInd).
 Before setting up the window manager, install some fonts to avoid issues.
 
 ```bash
-$ sudo pacman -S ttf-dejavu ttf-liberation noto-fonts noto-fonts-cjk
+$ sudo pacman -S ttf-dejavu ttf-liberation noto-fonts noto-fonts-cjk ttf-font-awesome
 ```
 
 Also install firefox and unzip tool to download the Mononoki font.
@@ -68,7 +68,7 @@ My setup is:
 - [kitty](https://wiki.archlinux.org/title/Kitty) (Terminal)
 
 ```bash
-$ sudo pacman -S hyprland sddm kitty waybar qt5-wayland qt6-wayland wl-clipboard
+$ sudo pacman -S hyprland sddm kitty waybar qt5-wayland qt6-wayland wl-clipboard xdg-desktop-portal-hyprland qt5-graphicaleffects qt5-quickcontrols2
 $ sudo systemctl enable sddm.service
 
 # You may want to reboot so ligthdm launches Hyprland on the next boot.
