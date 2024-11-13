@@ -1,3 +1,4 @@
+alsa-utils
 base
 base-devel
 blueman
@@ -11,6 +12,7 @@ discord
 docker
 docker-compose
 dolphin
+downgrade
 easyeffects
 evtest
 filelight
@@ -65,6 +67,7 @@ unzip
 visual-studio-code-bin
 vulkan-radeon
 waybar
+wget
 whatsdesk-bin
 wl-clipboard
 wlsunset
