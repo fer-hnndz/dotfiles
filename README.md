@@ -232,8 +232,9 @@ A list of software that I use in my environment, but that is not necessary for t
 
 | Software                     | Description                                    |
 |------------------------------|------------------------------------------------|
-| Dolphin                      | File Manager                                   |
+| Thunar                       | File Manager                                   |
 | Less                         | Pager for Git and Arch journal                 |
+| hyrppolkit-agent             | Auth agent for Hyprland                        |
 | visual-studio-code-bin (AUR) | Propietary VsCode (for extension sync support) |
 | spotify (AUR)                | ¯\_(ツ)_/¯                                     |
 | Discord                      | Chat                                           |
