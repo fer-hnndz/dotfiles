@@ -1,4 +1,6 @@
+albert
 alsa-utils
+azuredatastudio-bin
 base
 base-devel
 blueman
@@ -12,9 +14,7 @@ discord
 docker
 docker-compose
 dolphin
-downgrade
 easyeffects
-evtest
 filelight
 firefox
 galculator
@@ -24,13 +24,13 @@ git
 gnome-control-center
 gnome-menus
 gnome-terminal
-gparted
+go-sqlcmd
 htop
 hypridle
 hyprland
 hyprlock
-hyprpolkitagent-git
 hyprshot
+hyprutils
 kitty
 less
 linux
@@ -54,6 +54,7 @@ pavucontrol
 pipewire-alsa
 pipewire-pulse
 plymouth
+polkit-kde-agent
 postgresql
 postman-bin
 qt5-graphicaleffects
@@ -80,7 +81,10 @@ wl-clipboard
 wlsunset
 xdg-desktop-portal-hyprland
 xf86-video-amdgpu
+xorg-xhost
+xwaylandvideobridge
 yarn
 yay
 yay-debug
+zoom
 zsh
