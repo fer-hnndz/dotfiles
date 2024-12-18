@@ -15,6 +15,7 @@ This is a collection of configuration files for my Arch installation.
   - [Monitor Setup](#monitor-setup)
   - [Trackpad Gestures](#trackpad-gestures)
   - [Session Locker](#session-locker)
+  - [Bluetooth](#bluetooth)
   - [Boot Screen](#boot-screen)
 - [Extra Tools](#extra-tools)
   - [Program Launcher](#program-launcher)
@@ -25,25 +26,10 @@ This is a collection of configuration files for my Arch installation.
 - [Extra Software](#extra-software)
 
 
-# Post Arch Installation
-After installing Arch on the live USB make sure you have installed some utilites for later.
-
-```bash
-$ pacman -S networkmanager neovim sudo git
-$ systemctl enable networkmanager.service
-
-# Make sure to setup correctly the sudoers file and add the your user to it.
-
-$ export EDITOR=nvim;
-$ visudo
-```
-
-You can later setup the network easier with `nmtui`.
-
-For the bootloader I chose `rEFInd` since it was a smoother experience setting it up.
-Refer to [rEFInd Installation](https://wiki.archlinux.org/title/REFInd).
 
 # Window Manager and Login
+
+My preffered Window Manager is [**Hyprland**](https://wiki.archlinux.org/title/Hyprland). But I also use [**GNOME**](https://wiki.archlinux.org/title/GNOME) in case I want to use a more traditional desktop environment.
 
 Before setting up the window manager, install some fonts to avoid issues.
 
@@ -51,27 +37,28 @@ Before setting up the window manager, install some fonts to avoid issues.
 $ sudo pacman -S ttf-dejavu ttf-liberation noto-fonts noto-fonts-cjk ttf-font-awesome
 ```
 
-Also install firefox and unzip tool to download the Mononoki font.
+I also use some custom fonts, but these can be installed later:
+- Mononoki (Nerd Font)
+- Montserrat (*available on Google Fonts*)
 
-```bash
-$ sudo pacman -S firefox unzip
-
-# After downloading Mononoki
-$ unzip Mononoki.zip -d Mononoki
-$ mkdir ~/.local/share/fonts/ttf
-$ cp Mononoki ~/.local/share/fonts/ttf
-```
-
-My setup is:
+My daily setup is:
 - [Hyprland](https://wiki.archlinux.org/title/Hyprland) (Window Manager)
 - [SDDM](https://wiki.archlinux.org/title/SDDM) (Login Manager)
+  - Refer to SDDM's documentation to change the theme (located in `extra-config`)
 - [kitty](https://wiki.archlinux.org/title/Kitty) (Terminal)
 
 ```bash
-$ sudo pacman -S hyprland sddm kitty waybar qt5-wayland qt6-wayland wl-clipboard cliphist xdg-desktop-portal-hyprland qt5-graphicaleffects qt5-quickcontrols2
+# Gnome
+$ sudo pacman -S gnome-shell gnome-terminal gnome-control-center gnome-menus evince  	xdg-desktop-portal-gnome
+
+# Hyprland
+$ sudo pacman -S hyprland sddm kitty waybar qt5-wayland qt6-wayland xdg-desktop-portal-hyprland qt5-graphicaleffects qt5-quickcontrols2 polkit-kde-agent hypridle hyprlock hyprshot hyprutils
 $ sudo systemctl enable sddm.service
 
-# You may want to reboot so ligthdm launches Hyprland on the next boot.
+# Clipboard tools
+$ sudo pacman -S wl-clipboard cliphist
+
+# You may want to reboot so LightDM launches Hyprland on the next boot.
 $ systemctl reboot
 ```
 
@@ -83,24 +70,20 @@ Open a terminal and with a text editor edit your `.bashrc` file.
 ```bash
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 ```
-
 Once you have added the alias, clone the dotfiles repository. \
 **Make sure you've set up your SSH keys for GitHub.**
 
 ```bash
 $ git clone --bare git@github.com:fer-hnndz/dotfiles.git $HOME/.dotfiles
 $ dotfiles config --local status.showUntrackedFiles no
-$ dotfiles checkout
 
-# Probably some files are going to exist, so you may want to backup them and then retry checkout.
+# Before checking out, make sure to install required fonts.
+$ dotfiles checkout
 ```
 
-> NOTE: Before reloading my configuration as is. Make sure to install the necessary tools for the config to work.\
-> These are detailed in the following sections.
-
 # Building the Basic Environment
-In this section I'm going to details the tools I use in my Arch environment. \
-Some may be previously installed if you bared cloned this repository.
+In this section I'm going to details the tools I use in my Hyprland environment.\
+GNOME should pretty much work out of the box.
 
 ## Wallpapers
 
@@ -161,6 +144,16 @@ My configuration automatically invokes hyprlock when returning from a suspend.
 ```bash
 sudo pacman -S hyprlock
 ```
+
+## Bluetooth
+
+I use `bluez` and `blueman` to manage bluetooth devices.
+
+```bash
+$ sudo pacman -S bluez blueman
+$ sudo systemctl enable bluetooth.service
+```
+
 ## Boot Screen
 
 I use [Plymouth](https://wiki.archlinux.org/title/Plymouth) as my boot screen.
@@ -242,6 +235,8 @@ A list of software that I use in my environment, but that is not necessary for t
 | obs-studio                   | Screen recording                               |
 | galculator                   | Calculator                                     |
 | filelight                    | Disk usage analyzer                            |
-| bluez                        | Bluetooth stack                                |
-| blueman                      | Bluetooth manager                              |
 | htop                         | System monitor                                 |
+| cmatrix                      | Matrix screensaver                             |
+| evince                       | PDF viewer                                     |
+| py7zip                       | 7zip                                           |
+
