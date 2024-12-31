@@ -2,7 +2,7 @@
 	"layer": "top",
 	// Using margin-bottom with a negative value in order to reduce the space between Hyprland window and waybar
 	"margin-bottom": 6,
-	"margin-top": 4,
+	"margin-top": 0,
 	"modules-left": ["custom/launcher", "cpu","memory", "network","custom/spotify", "tray"],
 	"modules-center": ["hyprland/workspaces"],
 	"modules-right": ["backlight","pulseaudio","clock", "battery", "custom/power"],
@@ -50,7 +50,7 @@
 		"spacing": 10
 	},
     "clock": {
-    	"format": " {:%d/%M/%Y %H:%M}",
+    	"format": " {:%d/%m/%Y %H:%M}",
      },
     "cpu": {
         "interval": 15,
