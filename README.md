@@ -238,5 +238,7 @@ A list of software that I use in my environment, but that is not necessary for t
 | htop                         | System monitor                                 |
 | cmatrix                      | Matrix screensaver                             |
 | evince                       | PDF viewer                                     |
-| py7zip                       | 7zip                                           |
+| 7zip                         | 7zip                                           |
+| mirage (AUR)                 | Image Viewer                                   |
+| dbvis                        | Database Visualizer Tool                       |
 
