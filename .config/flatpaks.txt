@@ -1,0 +1,4 @@
+com.discordapp.Discord
+com.getpostman.Postman
+io.missioncenter.MissionCenter
+org.libreoffice.LibreOffice
