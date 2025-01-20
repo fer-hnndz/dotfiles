@@ -1,4 +1,4 @@
 com.discordapp.Discord
-com.getpostman.Postman
+com.rtosta.zapzap
 io.missioncenter.MissionCenter
 org.libreoffice.LibreOffice

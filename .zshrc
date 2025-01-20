@@ -80,6 +80,7 @@ autoload -Uz compinit && compinit
 export LANG=en_US.UTF-8
 export EDITOR='nvim'
 
+alias flatpak-backup='flatpak list --columns=application --app > ~/.config/flatpaks.txt'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias dotfiles='/usr/bin/git --git-dir="$HOME/.dotfiles" --work-tree=$HOME'
