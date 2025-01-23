@@ -1,4 +1,0 @@
-com.discordapp.Discord
-com.rtosta.zapzap
-io.missioncenter.MissionCenter
-org.libreoffice.LibreOffice
