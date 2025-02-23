@@ -68,7 +68,7 @@ ZSH_THEME="maran"
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(python git zsh-shift-select zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git zsh-shift-select zsh-autosuggestions zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -86,5 +86,4 @@ alias grep='grep --color=auto'
 alias dotfiles='/usr/bin/git --git-dir="$HOME/.dotfiles" --work-tree=$HOME'
 neofetch
 
-[ -f "/home/fer/.ghcup/env" ] && . "/home/fer/.ghcup/env" # ghcup-env
 
