@@ -1,89 +1,99 @@
 {
-	"layer": "top",
-	// Using margin-bottom with a negative value in order to reduce the space between Hyprland window and waybar
-	"margin-bottom": 6,
-	"margin-top": 0,
-	"modules-left": ["custom/launcher", "cpu","memory", "network","custom/spotify", "tray"],
-	"modules-center": ["hyprland/workspaces"],
-	"modules-right": ["backlight","pulseaudio","clock", "battery", "custom/power"],
-	
-	"pulseaudio": {
-		"tooltip": false,
-		"scroll-step": 5,
-		"format": "{icon} {volume}%",
-		"format-muted": "{icon} {volume}%",
-		"on-click":"pactl set-sink-mute @DEFAULT_SINK@ toggle",
-		"format-icons": {
-			"default": [" ", " ", " "]
-		}
-	},
-	"network": {
-		// "interface": "wlp2*", // (Optional) To force the use of this interface
-		"format-wifi": " ",
-		"format-ethernet": " ",
-		"tooltip-format": "{essid} ({signalStrength}%)",
-		"format-linked": "{ifname} (No IP)  ",
-		"format-disconnected": "⚠ ",
-		"format-alt": "{ifname}: {ipaddr}/{cidr}"
-		},
-	"backlight": {
-		"tooltip": false,
-		"format": " {}%",
-		"interval":1,
-		"on-scroll-up": "light -A 5",
-		"on-scroll-down": "light -U 5"
-	},
-    "battery": {
-        "states": {
-            "good": 95,
-            "warning": 30,
-            "critical": 20
-        },
-        "format": "{icon}  {capacity}%",
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
-        "format-alt": "{time} {icon}",
-        "format-icons": [" ", " ", " ", " ", " "]
-    },
-	"tray":{
-		"icon-size":18,
-		"spacing": 10
-	},
-    "clock": {
-    	"format": " {:%d/%m/%Y %H:%M}",
-     },
-    "cpu": {
-        "interval": 15,
-        "format": "  {}%",
-        "max-length": 10
-    },
-    "memory": {
-        "interval": 30,
-        "format": "  {}%",
-        "max-length": 10
-    },
-    "custom/spotify": {
-    	"interval": 1,
-	"return-type": "json",
-	"exec": "~/.config/waybar/scripts/spotify.sh",
-	"exec-if": "pgrep spotify",
-	"escape": true
+        "layer": "top",
+        "position": "top",
+        "reload_style_on_change": true,
+        "modules-left": ["custom/notification","clock","custom/pacman","tray"],
+        "modules-center": ["hyprland/workspaces"],
+        "modules-right": ["group/expand","bluetooth","network","battery"],
 
-    },
-    "custom/launcher":{
-        "format": " ",
-        "on-click": "rofi -show drun",
-        "on-click-right": "killall rofi"
-    },
-    "custom/power":{
-        "format": " ",
-        "on-click": "wlogout",
-    },
-    // The code following below is given in the great documentation for Waybar status bar under Useful Utilities in Hyprland wiki
-    "hyrpland/workspaces": {
-    	"format": "{icon}",
-	"on-scroll-up": "hyprctl dispatch workspace e+1",
-	"on-scroll-down": "hyprctl dispatch workspace e-1",
-	"on-click": "activate"
-	}
-}
+        "hyprland/workspaces": {
+            "format": "{icon}",
+            "format-icons": {
+                "active": "",
+                "default": "",
+                "empty": ""
+            },
+            "persistent-workspaces": {
+                "*": [ 1,2,3,4,5 ]
+            }
+        },
+        "custom/notification": {
+            "tooltip": false,
+            "format": "",
+            "on-click": "swaync-client -t -sw",
+            "escape": true
+        },
+        "clock": {
+            "format": "{:%R %d/%m}",
+            "interval": 1,   
+            "tooltip-format": "<tt>{calendar}</tt>",
+            "calendar": {
+                "format": {
+                    "today": "<span color='#fAfBfC'><b>{}</b></span>"
+                }
+            },
+            "actions": {
+                "on-click-right": "shift_down",
+                "on-click": "shift_up"
+            }
+        },
+        "network": {
+            "format-wifi": "",
+            "format-ethernet":"",
+            "format-disconnected": "",
+            "tooltip-format-disconnected": "Error",
+            "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+            "tooltip-format-ethernet": "{ifname} 🖧 ",
+            "on-click": "kitty nmtui"
+        },
+        "bluetooth": {
+            "format-on": "󰂯",
+            "format-off": "BT-off",
+            "format-disabled": "󰂲",
+            "format-connected-battery": "{device_battery_percentage}% 󰂯",
+            "format-alt": "{device_alias} 󰂯",
+            "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+            "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+            "tooltip-format-enumerate-connected": "{device_alias}\n{device_address}",
+            "tooltip-format-enumerate-connected-battery": "{device_alias}\n{device_address}\n{device_battery_percentage}%",
+            "on-click-right": "blueman-manager",
+        }, 
+        "battery": {
+            "interval":30,
+            "states": {
+                "good": 95,
+                "warning": 30,
+                "critical": 20
+            },
+            "format": "{capacity}% {icon}",
+            "format-charging": "{capacity}% 󰂄",
+            "format-plugged": "{capacity}% 󰂄 ",
+            "format-alt": "{time} {icon}",
+            "format-icons": [
+                "󰁻",
+            "󰁼",
+            "󰁾",
+            "󰂀",
+            "󰂂",
+            "󰁹"
+            ],
+        },
+        "custom/pacman": {
+            "format": "󰅢   {}",
+            "interval": 30,   
+            "exec": "checkupdates | wc -l",
+            "exec-if": "exit 0",
+            "on-click": "kitty sh -c 'yay -Syu; echo Done - Press enter to exit; read'; pkill -SIGRTMIN+8 waybar",
+            "signal": 8,
+            "tooltip": false,
+        },
+        "custom/expand": {
+            "format": "",
+            "tooltip": false
+        },
+        "custom/endpoint":{
+            "format": "|",
+            "tooltip": false
+        },
+} 
+

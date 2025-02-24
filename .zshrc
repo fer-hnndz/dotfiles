@@ -87,3 +87,5 @@ alias dotfiles='/usr/bin/git --git-dir="$HOME/.dotfiles" --work-tree=$HOME'
 neofetch
 
 
+
+[ -f "/home/fer/.ghcup/env" ] && . "/home/fer/.ghcup/env" # ghcup-env
