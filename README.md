@@ -4,7 +4,6 @@ This is a collection of configuration files for my Arch installation.
 
 # Table of Contents
 
-- [Post Arch Installation](#post-arch-installation)
 - [Window Manager and Login](#window-manager-and-login)
 - [Setting up `dotfiles`](#setting-up-dotfiles)
 - [Building the Basic Environment](#building-the-basic-environment)
@@ -25,6 +24,9 @@ This is a collection of configuration files for my Arch installation.
   - [Notification Support](#notification-support)
   - [OhMyZsh](#ohmyzsh)
 - [Extra Software](#extra-software)
+  - [Network Time Protocol (NTP)](#network-time-protocol-ntp)
+  - [TRIM](#trim)
+  - [Software](#software)
 
 # Window Manager and Login
 
@@ -40,47 +42,71 @@ I also use some custom fonts, but these can be installed later:
 
 - Mononoki (Nerd Font)
 - Montserrat (_available on Google Fonts_)
+- apple-fonts-ttf (AUR)
+- ttf-segoe-ui (AUR)
 
-My daily setup is:
+## Installing GNOME
 
-- [Hyprland](https://wiki.archlinux.org/title/Hyprland) (Window Manager)
-- [SDDM](https://wiki.archlinux.org/title/SDDM) (Login Manager)
-- [kitty](https://wiki.archlinux.org/title/Kitty) (Terminal)
+First I prefer to install GNOME since it avoids the hassle of setting up lots of stuff.
 
 ```bash
-# Gnome
-$ sudo pacman -S gnome-shell gnome-terminal gnome-control-center gnome-menus evince xdg-desktop-portal-gnome
-
-# Hyprland
-$ sudo pacman -S hyprland sddm kitty waybar qt5-wayland qt6-wayland xdg-desktop-portal-hyprland qt5-graphicaleffects qt5-quickcontrols2 polkit-kde-agent hypridle hyprlock hyprshot hyprutils
-$ sudo systemctl enable sddm.service
-
-# Clipboard tools
-$ sudo pacman -S wl-clipboard cliphist
-
-# You may want to reboot so LightDM launches Hyprland on the next boot.
-$ systemctl reboot
+$ sudo pacman -S gdm gnome-shell gnome-terminal gnome-control-center gnome-menus evince xdg-desktop-portal-gnome gnome-keyring nautilus
 ```
+
+Once that is done, enable GDM and restart your computer.
+
+```bash
+$ sudo systemctl enable gdm.service
+```
+
+You may now login into GNOME and tweak the settings to your liking.
 
 ## Setting up `dotfiles`
 
-Once rebooted, login into your user and you should see Hyprland.
+> [!IMPORTANT]
+> To setup the dotfiles repository, make sure to setup Git properly.
+
 Open a terminal and with a text editor edit your `.bashrc` file.
 
 ```bash
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 ```
 
-Once you have added the alias, clone the dotfiles repository. \
-**Make sure you've set up your SSH keys for GitHub.**
+Once you have added the alias, clone the dotfiles repository
 
 ```bash
 $ git clone --bare git@github.com:fer-hnndz/dotfiles.git $HOME/.dotfiles
 $ dotfiles config --local status.showUntrackedFiles no
+```
 
-# Before checking out, make sure to install required fonts.
+Now, proceed with the Hyprland installation before restoring the dotfiles.
+
+## Installing Hyprland
+
+First, install Hyprland and some other tools for suspending, locking, screenshots, etc. and its dependencies.
+
+```bash
+# Terminal
+$ sudo pacman -S kitty
+
+# Hyprland
+$ sudo pacman -S hyprland hypridle hyprlock hyprshot hyprutils hyprpolkitagent waybar qt5-wayland qt6-wayland xdg-desktop-portal-hyprland qt5-graphicaleffects qt5-quickcontrols2
+
+# Clipboard tools
+$ sudo pacman -S wl-clipboard cliphist
+```
+
+You can now login into Hyprland and restore the dotfiles.
+
+```bash
 $ dotfiles checkout
 ```
+
+I suggest to start editing `~/.config/hyprland/hyprland.conf` to your liking, in case you need to setup different monitors, input devices, etc.
+
+> [!WARNING]
+> To avoid having weird issues with text display, make sure to install the fonts mentioned above.
+> You can now exit GNOME and login into Hyprland.
 
 # Building the Basic Environment
 
@@ -95,8 +121,9 @@ To setup wallpapers, install [swww](https://github.com/LGFae/swww).
 $ sudo pacman -S swww
 ```
 
-> swww config is done on the Hyprland config file. You can also use \
-> swww {path} to set a wallpaper.
+> [!NOTE]
+> swww's config is done on the Hyprland config file.
+> You can also use `$ swww {path}` to set a wallpaper once the swww-daemon is running.
 
 ## Audio
 
@@ -117,13 +144,11 @@ Installing and rebooting should be enough to get audio working.
 
 ### Equalizer
 
-I use `EasyEffects`. I've also included some presets in the `extra-config` folder. \
+I use `EasyEffects`. \
+I've also included some presets in the `extra-config` folder. \
 To apply the presets, move them to `~/.config/easyeffects/output` and select them in the EasyEffects GUI.
 
-For equalizer effects to work, install these plugins:
-
-- calf
-- lsp-plugins
+For equalizer effects to work, install EasyEffects and the required plugins:
 
 ```bash
 $ sudo pacman -S easyeffects calf lsp-plugins
@@ -138,6 +163,8 @@ You can also install [wlsunset](https://github.com/kennylevinsen/wlsunset) to co
 $ sudo pacman -S brightnessctl wlsunset
 $ wlsunset -l LAT -L LON
 ```
+
+wlsunset is setup in Hyprland's config file. You can change the location and the color temperature to your liking.
 
 ## Monitor Setup
 
@@ -154,8 +181,10 @@ I use [hyprlock](https://github.com/hyprwm/hyprlock) to lock the session.
 My configuration automatically invokes hyprlock when returning from a suspend.
 
 ```bash
-sudo pacman -S hyprlock
+$ sudo pacman -S hyprlock
 ```
+
+To show the correct avatar, edit the avatar image to the correct path in the Hyprlock's config file.
 
 ## Bluetooth
 
@@ -165,13 +194,6 @@ I use `bluez` and `blueman` to manage bluetooth devices.
 $ sudo pacman -S bluez blueman
 $ sudo systemctl enable bluetooth.service
 ```
-
-## SDDM
-
-Head over to `/usr/share/sddm/themes/` and paste the theme.
-You can also copy any other background you'd like to use and head over to `theme.conf` to change the background.
-
-Also refer to [the wiki](https://wiki.archlinux.org/title/SDDM) for more information.
 
 ## Boot Screen
 
@@ -245,16 +267,36 @@ $ git clone https://github.com/jirutka/zsh-shift-select.git ${ZSH_CUSTOM:-~/.oh-
 
 # Extra Software
 
-A list of software that I use in my environment, but that is not necessary for the configuration to work, or no detailed explanation for setup is needed.
+## Network Time Protocol (NTP)
+
+To ensure clock is always correct, install `ntp`.
+
+```bash
+$ sudo pacman -S ntp
+$ sudo systemctl enable ntpd.service
+```
+
+## TRIM
+
+You can find TRIM utilities in `util-linux` package.
+
+```bash
+$ sudo pacman -S util-linux
+$ sudo systemctl enable fstrim.timer
+```
+
+## Software
+
+Below is the rest of programs that I use that don't need detailed explanation or configuration.
 
 | Software                      | Description                                    |
 | ----------------------------- | ---------------------------------------------- |
-| Thunar                        | File Manager                                   |
 | Less                          | Pager for Git and Arch journal                 |
-| polkit-kde-agent              | Auth agent                                     |
 | visual-studio-code-bin (AUR)  | Propietary VsCode (for extension sync support) |
 | spotify (AUR)                 | ¯\_(ツ)\_/¯                                    |
 | Discord                       | Chat                                           |
+| NeoVim                        | Text editor                                    |
+| Firefox                       | Web browser                                    |
 | Gedit                         | Simple graphical text editor                   |
 | obs-studio (Flatpak)          | Screen recording                               |
 | Droidcam OBS Plugin (Flatpak) | Android camera plugin for OBS                  |
@@ -263,8 +305,6 @@ A list of software that I use in my environment, but that is not necessary for t
 | cmatrix                       | Matrix screensaver                             |
 | galculator                    | Calculator                                     |
 | filelight                     | Disk usage analyzer                            |
-| htop                          | System monitor                                 |
-| cmatrix                       | Matrix screensaver                             |
 | evince                        | PDF viewer                                     |
 | 7zip                          | 7zip                                           |
 | mirage (AUR)                  | Image Viewer                                   |
