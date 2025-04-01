@@ -307,5 +307,5 @@ Below is the rest of programs that I use that don't need detailed explanation or
 | filelight                     | Disk usage analyzer                            |
 | evince                        | PDF viewer                                     |
 | 7zip                          | 7zip                                           |
-| mirage (AUR)                  | Image Viewer                                   |
+| Loupe                         | Image Viewer                                   |
 | dbvis                         | Database Visualizer Tool                       |
