@@ -85,7 +85,7 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias dotfiles='/usr/bin/git --git-dir="$HOME/.dotfiles" --work-tree=$HOME'
 neofetch
-
+alias hhdr='python ~/.config/hypr/scripts/hdr.py'
 
 
 [ -f "/home/fer/.ghcup/env" ] && . "/home/fer/.ghcup/env" # ghcup-env
