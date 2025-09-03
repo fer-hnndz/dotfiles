@@ -19,14 +19,10 @@ def _get_current_hdr_status():
         for line in lines:
             line = line.strip()
 
-            if "bitdepth" in line:
-                bitdepth = line.split(",")[-1].strip()
-
-                if bitdepth == "10":
+            if "cm," in line:
+                if "cm, hdr" in line:
                     return True
-
-                else:
-                    return False
+                else: return False
 
         return False
 
@@ -39,11 +35,11 @@ def _set_hdr_status(status: bool):
         contents = ""
 
         for line in lines:
-            if "bitdepth" in line:
+            if "cm," in line:
                 if status:
-                    line = line.replace("bitdepth, 8", "bitdepth, 10")
+                    line = line.replace("cm, srgb#", "cm, hdr")
                 else:
-                    line = line.replace("bitdepth, 10", "bitdepth, 8")
+                    line = line.replace("cm, hdr", "cm, srgb#")
 
             # print(line)
             contents += line
