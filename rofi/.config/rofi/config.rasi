@@ -1,6 +1,6 @@
 @theme "/usr/share/rofi/themes/gruvbox-dark-hard.rasi"
 configuration {
-    modi: "combi,filebrowser";
+    modi: "combi";
     font: "Mononoki\ Nerd\ Font 10";
-    combi-modi: "window,drun";
+    combi-modi: "window,drun,run";
 }
