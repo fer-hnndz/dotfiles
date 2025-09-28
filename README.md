@@ -2,36 +2,11 @@
 
 This is a collection of configuration files for my Arch installation.
 
-# Table of Contents
+Clone this repository with git and follow the guide below.
 
-- [Window Manager and Login](#window-manager-and-login)
-- [Setting up `dotfiles`](#setting-up-dotfiles)
-- [Building the Basic Environment](#building-the-basic-environment)
-  - [Wallpapers](#wallpapers)
-  - [Audio](#audio)
-    - [Equalizer](#equalizer)
-  - [Brightness and Eye Care](#brightness-and-eye-care)
-  - [Monitor Setup](#monitor-setup)
-  - [Trackpad Gestures](#trackpad-gestures)
-  - [Session Locker](#session-locker)
-  - [Bluetooth](#bluetooth)
-  - [SDDM](#sddm)
-  - [Boot Screen](#boot-screen)
-- [Extra Tools](#extra-tools)
-  - [Program Launcher](#program-launcher)
-  - [AUR Helper (yay)](#aur-helper-yay)
-  - [Applets](#applets)
-  - [Notification Support](#notification-support)
-  - [OhMyZsh](#ohmyzsh)
-- [Extra Software](#extra-software)
-  - [Network Time Protocol (NTP)](#network-time-protocol-ntp)
-  - [TRIM](#trim)
-  - [Software](#software)
+# Window manager and Desktop Experience
 
-# Window Manager and Login
-
-My preffered Window Manager is [**Hyprland**](https://wiki.archlinux.org/title/Hyprland). But I also use [**GNOME**](https://wiki.archlinux.org/title/GNOME) in case I want to use a more traditional desktop environment.
-
+My go-to choice is [**Hyprland**](https://wiki.archlinux.org/title/Hyprland).
 Before setting up the window manager, install some fonts to avoid issues.
 
 ```bash
@@ -41,45 +16,23 @@ $ sudo pacman -S ttf-dejavu ttf-liberation noto-fonts noto-fonts-cjk ttf-font-aw
 I also use some custom fonts, but these can be installed later:
 
 - Mononoki (Nerd Font)
-- Montserrat (_available on Google Fonts_)
 - apple-fonts-ttf (AUR)
 - ttf-segoe-ui (AUR)
 
-## Installing GNOME
-
-First I prefer to install GNOME since it avoids the hassle of setting up lots of stuff.
-
-```bash
-$ sudo pacman -S gdm gnome-shell gnome-terminal gnome-control-center gnome-menus evince xdg-desktop-portal-gnome gnome-keyring nautilus
-```
-
-Once that is done, enable GDM and restart your computer.
-
-```bash
-$ sudo systemctl enable gdm.service
-```
-
 You may now login into GNOME and tweak the settings to your liking.
 
-## Setting up `dotfiles`
+## Setting up `dotfiles` and `stow`
 
-> [!IMPORTANT]
-> To setup the dotfiles repository, make sure to setup Git properly.
+Make sure you have `stow` installed beforehand. \
+Head over to the root of the repository, you can see different config folders for my setup.
 
-Open a terminal and with a text editor edit your `.bashrc` file.
-
-```bash
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-```
-
-Once you have added the alias, clone the dotfiles repository
+If you want to copy the configuration for Hyprland for instance, run:
 
 ```bash
-$ git clone --bare git@github.com:fer-hnndz/dotfiles.git $HOME/.dotfiles
-$ dotfiles config --local status.showUntrackedFiles no
+stow hypr-laptop
 ```
 
-Now, proceed with the Hyprland installation before restoring the dotfiles.
+This will create the symlinks to my Hyprland's settings.
 
 ## Installing Hyprland
 
@@ -96,22 +49,26 @@ $ sudo pacman -S hyprland hypridle hyprlock hyprshot hyprutils hyprpolkitagent w
 $ sudo pacman -S wl-clipboard cliphist
 ```
 
-You can now login into Hyprland and restore the dotfiles.
-
-```bash
-$ dotfiles checkout
-```
+You can now login into Hyprland and stow more configs.
 
 I suggest to start editing `~/.config/hyprland/hyprland.conf` to your liking, in case you need to setup different monitors, input devices, etc.
 
 > [!WARNING]
 > To avoid having weird issues with text display, make sure to install the fonts mentioned above.
-> You can now exit GNOME and login into Hyprland.
 
 # Building the Basic Environment
 
 In this section I'm going to details the tools I use in my Hyprland environment.\
 GNOME should pretty much work out of the box.
+
+## File manager
+
+I use Gnome's **Nautilus** file explorer.
+I also install the following to render thumbnails correctly.
+
+```bash
+sudo pacman -S ffmpegthumbnailer gst-libav gst-plugins-ugly ffmpeg-audio-thumbnailer
+```
 
 ## Wallpapers
 
@@ -120,10 +77,6 @@ To setup wallpapers, install [swww](https://github.com/LGFae/swww).
 ```bash
 $ sudo pacman -S swww
 ```
-
-> [!NOTE]
-> swww's config is done on the Hyprland config file.
-> You can also use `$ swww {path}` to set a wallpaper once the swww-daemon is running.
 
 ## Audio
 
@@ -166,25 +119,14 @@ $ wlsunset -l LAT -L LON
 
 wlsunset is setup in Hyprland's config file. You can change the location and the color temperature to your liking.
 
-## Monitor Setup
-
-Refer to Hyprland's [Monitor Setup](https://wiki.hyprland.org/Configuring/Monitors)
-
-## Trackpad Gestures
-
-Refer to Hyprland [Touchpad Settings](https://wiki.hyprland.org/Configuring/Variables/#touchpad)
-
 ## Session Locker
 
 I use [hyprlock](https://github.com/hyprwm/hyprlock) to lock the session.
-
 My configuration automatically invokes hyprlock when returning from a suspend.
 
 ```bash
 $ sudo pacman -S hyprlock
 ```
-
-To show the correct avatar, edit the avatar image to the correct path in the Hyprlock's config file.
 
 ## Bluetooth
 
@@ -199,13 +141,6 @@ $ sudo systemctl enable bluetooth.service
 
 I use [Plymouth](https://wiki.archlinux.org/title/Plymouth) as my boot screen.
 
-To apply the configuration, copy the file `plymouthd.conf` located in `extra-config` to `/etc/plymouth/`. \
-Also, make sure to copy `mkinitcpio.conf` to `/etc/` and run `sudo mkinitcpio -P` to apply the changes.
-
-# Extra Tools
-
-In this section I'm going to detail some extra tools that I use in my Arch environment that speed up my workflow.
-
 ## Program Launcher
 
 [Rofi](https://wiki.archlinux.org/title/Rofi) is a program launcher just like MacOS's Spotlight.\
@@ -215,6 +150,10 @@ You can install it with:
 ```bash
 $ sudo pacman -S rofi papirus-icon-theme
 ```
+
+## Volume and Caps OSD
+
+I use [swayosd](https://github.com/ErikReider/SwayOSD) to show my current volume and caps lock status.
 
 ## AUR Helper (yay)
 
@@ -242,12 +181,13 @@ $ sudo pacman -S network-manager-applet
 With Hyprland no further notification setup is needed aside from installing a notification daemon.
 
 ```bash
-sudo pacman -S mako
+sudo pacman -S swaync
 ```
 
 ## OhMyZsh
 
 I use `zsh` as my shell and `oh-my-zsh` as my configuration manager.\
+My selected theme is `gnzh`.\
 To install `zsh` and `oh-my-zsh`:
 
 ```bash
@@ -255,7 +195,7 @@ $ sudo pacman -S zsh
 $ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
-Install the `zsh-autosuggestions`, `zsh-syntax-highlighting` and `zsh-shift-select` plugins.
+Install the `zsh-autosuggestions`, `zsh-syntax-highlighting` and `zsh-shift-select` plugins.\
 
 ```bash
 $ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
@@ -266,26 +206,6 @@ $ git clone https://github.com/jirutka/zsh-shift-select.git ${ZSH_CUSTOM:-~/.oh-
 ```
 
 # Extra Software
-
-## Network Time Protocol (NTP)
-
-To ensure clock is always correct, install `ntp`.
-
-```bash
-$ sudo pacman -S ntp
-$ sudo systemctl enable ntpd.service
-```
-
-## TRIM
-
-You can find TRIM utilities in `util-linux` package.
-
-```bash
-$ sudo pacman -S util-linux
-$ sudo systemctl enable fstrim.timer
-```
-
-## Software
 
 Below is the rest of programs that I use that don't need detailed explanation or configuration.
 
@@ -303,9 +223,10 @@ Below is the rest of programs that I use that don't need detailed explanation or
 | btop                          | System monitor                                 |
 | postman-bin (AUR)             | API testing tool                               |
 | cmatrix                       | Matrix screensaver                             |
-| galculator                    | Calculator                                     |
+| gnome-calculator              | Calculator                                     |
 | filelight                     | Disk usage analyzer                            |
 | evince                        | PDF viewer                                     |
 | 7zip                          | 7zip                                           |
 | Loupe                         | Image Viewer                                   |
 | dbvis                         | Database Visualizer Tool                       |
+| bleachbit                     | System Cleaner                                 |

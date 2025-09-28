@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="maran"
+ZSH_THEME="gnzh"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -80,9 +80,10 @@ autoload -Uz compinit && compinit
 export LANG=en_US.UTF-8
 export EDITOR='nvim'
 
-alias flatpak-backup='flatpak list --columns=application --app > ~/.config/flatpaks.txt'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-neofetch
+neofetch --colors 1 5 1 1 7
 alias hhdr='python ~/.config/hypr/scripts/hdr.py'
 
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
