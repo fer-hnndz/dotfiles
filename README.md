@@ -230,3 +230,4 @@ Below is the rest of programs that I use that don't need detailed explanation or
 | Loupe                         | Image Viewer                                   |
 | dbvis                         | Database Visualizer Tool                       |
 | bleachbit                     | System Cleaner                                 |
+| nmap                          | Network Scanner                                |
