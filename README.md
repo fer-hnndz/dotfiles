@@ -231,3 +231,5 @@ Below is the rest of programs that I use that don't need detailed explanation or
 | dbvis                         | Database Visualizer Tool                       |
 | bleachbit                     | System Cleaner                                 |
 | nmap                          | Network Scanner                                |
+| tcpdump                       | Network Analyzer                               |
+| netcat                        | Network Utility                                
