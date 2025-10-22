@@ -37,6 +37,9 @@
                 "on-click": "shift_up"
             }
         },
+        "tray": {
+            "spacing": 7
+          },
         "network": {
             "format-wifi": "",
             "format-ethernet":"",
