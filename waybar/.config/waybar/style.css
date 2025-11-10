@@ -88,7 +88,7 @@ tooltip {
 }
 
 #workspaces button.empty.active {
-    color: @color;
+    color: @color9;
     border: none;
     text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
 }

@@ -4,7 +4,7 @@ This is a collection of configuration files for my Arch installation.
 
 Clone this repository with git and follow the guide below.
 
-# Window manager and Desktop Experience
+# Window Manager
 
 My go-to choice is [**Hyprland**](https://wiki.archlinux.org/title/Hyprland).
 Before setting up the window manager, install some fonts to avoid issues.
@@ -18,21 +18,6 @@ I also use some custom fonts, but these can be installed later:
 - Mononoki (Nerd Font)
 - apple-fonts-ttf (AUR)
 - ttf-segoe-ui (AUR)
-
-You may now login into GNOME and tweak the settings to your liking.
-
-## Setting up `dotfiles` and `stow`
-
-Make sure you have `stow` installed beforehand. \
-Head over to the root of the repository, you can see different config folders for my setup.
-
-If you want to copy the configuration for Hyprland for instance, run:
-
-```bash
-stow hypr-laptop
-```
-
-This will create the symlinks to my Hyprland's settings.
 
 ## Installing Hyprland
 
@@ -58,8 +43,18 @@ I suggest to start editing `~/.config/hyprland/hyprland.conf` to your liking, in
 
 # Building the Basic Environment
 
-In this section I'm going to details the tools I use in my Hyprland environment.\
-GNOME should pretty much work out of the box.
+## Setting up `dotfiles` and `stow`
+
+Make sure you have `stow` installed beforehand. \
+Head over to the root of the repository, you can see different config folders for my setup.
+
+If you want to copy the configuration for Hyprland for instance, run:
+
+```bash
+stow hypr-laptop
+```
+
+This will create the symlinks to my Hyprland's settings.
 
 ## File manager
 
@@ -114,10 +109,17 @@ You can also install [wlsunset](https://github.com/kennylevinsen/wlsunset) to co
 
 ```bash
 $ sudo pacman -S brightnessctl wlsunset
-$ wlsunset -l LAT -L LON
 ```
 
 wlsunset is setup in Hyprland's config file. You can change the location and the color temperature to your liking.
+
+## GTK Theme
+
+Personally I like to use **Orchis Purple Dark** as my GTK theme.\
+
+```
+$ yay -S orchis-theme-git
+```
 
 ## Session Locker
 
@@ -217,11 +219,10 @@ Below is the rest of programs that I use that don't need detailed explanation or
 | Discord                       | Chat                                           |
 | NeoVim                        | Text editor                                    |
 | Firefox                       | Web browser                                    |
-| Gedit                         | Simple graphical text editor                   |
+| gnome-text-editor             | Simple graphical text editor                   |
 | obs-studio (Flatpak)          | Screen recording                               |
 | Droidcam OBS Plugin (Flatpak) | Android camera plugin for OBS                  |
 | btop                          | System monitor                                 |
-| postman-bin (AUR)             | API testing tool                               |
 | cmatrix                       | Matrix screensaver                             |
 | gnome-calculator              | Calculator                                     |
 | filelight                     | Disk usage analyzer                            |
@@ -232,4 +233,4 @@ Below is the rest of programs that I use that don't need detailed explanation or
 | bleachbit                     | System Cleaner                                 |
 | nmap                          | Network Scanner                                |
 | tcpdump                       | Network Analyzer                               |
-| netcat                        | Network Utility                                
+| netcat                        | Network Utility                                |
