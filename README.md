@@ -10,7 +10,7 @@ My go-to choice is [**Hyprland**](https://wiki.archlinux.org/title/Hyprland).
 Before setting up the window manager, install some fonts to avoid issues.
 
 ```bash
-$ sudo pacman -S ttf-dejavu ttf-liberation noto-fonts noto-fonts-cjk ttf-font-awesome
+sudo pacman -S ttf-dejavu ttf-liberation noto-fonts noto-fonts-cjk ttf-font-awesome
 ```
 
 I also use some custom fonts, but these can be installed later:
@@ -70,7 +70,7 @@ sudo pacman -S ffmpegthumbnailer gst-libav gst-plugins-ugly ffmpeg-audio-thumbna
 To setup wallpapers, install [swww](https://github.com/LGFae/swww).
 
 ```bash
-$ sudo pacman -S swww
+sudo pacman -S swww
 ```
 
 ## Audio
@@ -79,13 +79,13 @@ I use [Pipewire](https://wiki.archlinux.org/title/PipeWire) for audio.
 Refer to the installation guide for setup details.
 
 ```bash
-$ sudo pacman -S pipewire pipewire-audio pipewire-pulse pipewire-alsa pipewire-jack
+sudo pacman -S pipewire pipewire-audio pipewire-pulse pipewire-alsa pipewire-jack
 ```
 
 To add control via CLI or GUI install `pamixer` and`pavucontrol` respectively.
 
 ```bash
-$ sudo pacman -S pavucontrol pamixer
+sudo pacman -S pavucontrol pamixer
 ```
 
 Installing and rebooting should be enough to get audio working.
@@ -99,7 +99,7 @@ To apply the presets, move them to `~/.config/easyeffects/output` and select the
 For equalizer effects to work, install EasyEffects and the required plugins:
 
 ```bash
-$ sudo pacman -S easyeffects calf lsp-plugins
+sudo pacman -S easyeffects calf lsp-plugins
 ```
 
 ## Brightness and Eye Care
@@ -108,7 +108,7 @@ To control the brightness of the screen, you can use `brightnessctl`.\
 You can also install [wlsunset](https://github.com/kennylevinsen/wlsunset) to control the color temperature of your screen.
 
 ```bash
-$ sudo pacman -S brightnessctl wlsunset
+sudo pacman -S brightnessctl wlsunset
 ```
 
 wlsunset is setup in Hyprland's config file. You can change the location and the color temperature to your liking.
@@ -118,7 +118,7 @@ wlsunset is setup in Hyprland's config file. You can change the location and the
 Personally I like to use **Orchis Purple Dark** as my GTK theme.\
 
 ```
-$ yay -S orchis-theme-git
+yay -S orchis-theme-git
 ```
 
 ## Session Locker
@@ -127,7 +127,7 @@ I use [hyprlock](https://github.com/hyprwm/hyprlock) to lock the session.
 My configuration automatically invokes hyprlock when returning from a suspend.
 
 ```bash
-$ sudo pacman -S hyprlock
+sudo pacman -S hyprlock
 ```
 
 ## Bluetooth
@@ -135,8 +135,8 @@ $ sudo pacman -S hyprlock
 I use `bluez` and `blueman` to manage bluetooth devices.
 
 ```bash
-$ sudo pacman -S bluez blueman
-$ sudo systemctl enable bluetooth.service
+sudo pacman -S bluez blueman
+sudo systemctl enable bluetooth.service
 ```
 
 ## Boot Screen
@@ -150,7 +150,7 @@ Also install some icons so it looks better with the config.
 You can install it with:
 
 ```bash
-$ sudo pacman -S rofi papirus-icon-theme
+sudo pacman -S rofi papirus-icon-theme
 ```
 
 ## Volume and Caps OSD
@@ -164,10 +164,10 @@ To avoid all the hassle of building and installing packages from the AUR, I sugg
 Install the necessary tools for building packages and then clone the yay git repo.
 
 ```bash
-$ sudo pacman -S base-devel
-$ git clone https://aur.archlinux.org/yay.git
-$ cd yay
-$ makepkg -si
+sudo pacman -S base-devel
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
 ```
 
 ## Applets
@@ -175,7 +175,7 @@ $ makepkg -si
 Easily control the network with an applet.
 
 ```bash
-$ sudo pacman -S network-manager-applet
+sudo pacman -S network-manager-applet
 ```
 
 ## Notification Support
@@ -193,18 +193,18 @@ My selected theme is `gnzh`.\
 To install `zsh` and `oh-my-zsh`:
 
 ```bash
-$ sudo pacman -S zsh
-$ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sudo pacman -S zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
 Install the `zsh-autosuggestions`, `zsh-syntax-highlighting` and `zsh-shift-select` plugins.\
 
 ```bash
-$ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
-$ git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
-$ git clone https://github.com/jirutka/zsh-shift-select.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-shift-select
+git clone https://github.com/jirutka/zsh-shift-select.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-shift-select
 ```
 
 # Extra Software
@@ -234,3 +234,5 @@ Below is the rest of programs that I use that don't need detailed explanation or
 | nmap                          | Network Scanner                                |
 | tcpdump                       | Network Analyzer                               |
 | netcat                        | Network Utility                                |
+| nwg-displays                  | Utility to sort monitors for Hyprland          |
+| nwg-look                      | Utility to change GTK theme                    |

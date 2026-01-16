@@ -19,7 +19,8 @@ export GSK_RENDERER=gl
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 neofetch --colors 1 5 1 1 7
-alias hhdr='python ~/.config/hypr/scripts/hdr.py'
 
+
+export PATH=$PATH:~/.dotnet/tools
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
