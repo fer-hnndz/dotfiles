@@ -19,7 +19,7 @@ export GSK_RENDERER=gl
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 neofetch --colors 1 5 1 1 7
-
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 export PATH=$PATH:~/.dotnet/tools
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
