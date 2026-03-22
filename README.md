@@ -226,7 +226,7 @@ Below is the rest of programs that I use that don't need detailed explanation or
 | cmatrix                       | Matrix screensaver                             |
 | gnome-calculator              | Calculator                                     |
 | filelight                     | Disk usage analyzer                            |
-| evince                        | PDF viewer                                     |
+| okular                        | PDF viewer                                     |
 | 7zip                          | 7zip                                           |
 | Loupe                         | Image Viewer                                   |
 | dbvis                         | Database Visualizer Tool                       |
