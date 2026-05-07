@@ -219,9 +219,7 @@ Below is the rest of programs that I use that don't need detailed explanation or
 | Discord                       | Chat                                           |
 | NeoVim                        | Text editor                                    |
 | Firefox                       | Web browser                                    |
-| gnome-text-editor             | Simple graphical text editor                   |
-| obs-studio (Flatpak)          | Screen recording                               |
-| Droidcam OBS Plugin (Flatpak) | Android camera plugin for OBS                  |
+| zeditor                       | Simple graphical text editor                   |
 | btop                          | System monitor                                 |
 | cmatrix                       | Matrix screensaver                             |
 | gnome-calculator              | Calculator                                     |
@@ -230,9 +228,6 @@ Below is the rest of programs that I use that don't need detailed explanation or
 | 7zip                          | 7zip                                           |
 | Loupe                         | Image Viewer                                   |
 | dbvis                         | Database Visualizer Tool                       |
-| bleachbit                     | System Cleaner                                 |
-| nmap                          | Network Scanner                                |
-| tcpdump                       | Network Analyzer                               |
-| netcat                        | Network Utility                                |
 | nwg-displays                  | Utility to sort monitors for Hyprland          |
 | nwg-look                      | Utility to change GTK theme                    |
+| atac                          | Postman-like terminal client                   |
