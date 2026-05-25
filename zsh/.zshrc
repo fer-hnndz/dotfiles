@@ -19,7 +19,6 @@ export GSK_RENDERER=gl
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 export TERM=xterm-256color
-neofetch --colors 1 5 1 1 7
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 export PATH=$PATH:~/.dotnet/tools
@@ -28,3 +27,4 @@ export PATH=$PATH:~/.dotnet/tools
 export PATH="$HOME/.npm-global/bin:$PATH"
 
 . /usr/share/nvm/init-nvm.sh
+fastfetch
