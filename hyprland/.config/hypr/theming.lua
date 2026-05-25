@@ -6,6 +6,7 @@ hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_THEME", "Bibata-Modern-Amber")
 
+local wallust_colors = dofile(os.getenv("HOME") .. "/.config/hypr/wallust.lua")
 
 -----------------------
 ---- LOOK AND FEEL ----
@@ -25,8 +26,8 @@ hl.config({
         border_size = 2,
 
         col = {
-            active_border = { colors = { "rgba(FF0000FF)", "rgba(FF00FFFF)" }, angle = 45 },
-            inactive_border = "rgba(ffffff00)",
+            active_border = { colors = { wallust_colors.color1, wallust_colors.foreground }, angle = 45 },
+            inactive_border = wallust_colors.inactive_border,
         },
 
         -- Set to true to enable resizing windows by clicking and dragging on borders and gaps
@@ -80,7 +81,6 @@ hl.animation({ leaf = "workspaces", enabled = true, speed = 1.94, bezier = "almo
 -- hl.animation({ leaf = "workspacesIn", enabled = true, speed = 1.21, bezier = "almostLinear", style = "fade" })
 -- hl.animation({ leaf = "workspacesOut", enabled = true, speed = 1.94, bezier = "almostLinear", style = "fade" })
 hl.animation({ leaf = "zoomFactor", enabled = true, speed = 7, bezier = "quick" })
-
 
 ----------------
 ----  MISC  ----

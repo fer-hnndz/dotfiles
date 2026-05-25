@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ $# -lt 2 ]]; then
+    echo "Usage: set-wp <wp path> <screen>" >&2
+    exit 2
+fi
+
+image_path="$1"
+screen="$2"
+config_path="$HOME/.config/wallust/wallust.toml"
+
+if [[ ! -f "$image_path" ]]; then
+    echo "set-wp: wallpaper not found at '$image_path'." >&2
+    exit 1
+fi
+
+awww img -o "$screen" "$image_path"
+wallust run "$image_path" -C "$config_path" -q --skip-sequences
+hyprctl reload

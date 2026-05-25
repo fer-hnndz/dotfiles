@@ -18,6 +18,7 @@ export EDITOR='nvim'
 export GSK_RENDERER=gl
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
+alias set-wp='~/.config/hypr/scripts/set-wp'
 export TERM=xterm-256color
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 

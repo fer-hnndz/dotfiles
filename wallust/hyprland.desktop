@@ -1,0 +1,8 @@
+$background = rgb({{background | strip}})
+$foreground = rgb({{foreground | strip}})
+$color0 = rgb({{color0 | strip}})
+$color1 = rgb({{color1 | strip}})
+$color2 = rgb({{color2 | strip}})
+
+$active_border = rgba({{color2 | strip}}ff)
+$inactive_border = rgba({{color0 | strip}}aa)
