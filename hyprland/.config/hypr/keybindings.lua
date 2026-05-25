@@ -35,6 +35,7 @@ local terminal = "kitty"
 local fileManager = "thunar"
 local menu = "/home/fer/.config/rofi/scripts/launcher_t1"
 local powerMenu = "/home/fer/.config/rofi/scripts/powermenu_t2"
+local monitorConfig = "/home/fer/.config/hypr/monitors.lua"
 
 ---------------------
 ---- KEYBINDINGS ----
@@ -44,6 +45,8 @@ local mainMod = "SUPER"
 
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal)) -- Open a terminal
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd(powerMenu)) -- Powermenu
+hl.bind(mainMod .. " + A", hl.dsp.exec_cmd(terminal .. " -T pacsea pacsea")) -- Pacsea
+hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd("zeditor " .. monitorConfig)) -- Edit monitor config
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock")) -- Lock computer
 hl.bind(mainMod .. " + TAB", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" })) -- Toggle maximize a window
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" })) -- Toggle fullscreen a window

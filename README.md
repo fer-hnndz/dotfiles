@@ -56,21 +56,58 @@ stow hypr-laptop
 
 This will create the symlinks to my Hyprland's settings.
 
-## File manager
+## Keybindings (Hyprland)
 
-I use Gnome's **Nautilus** file explorer.
+Source: `~/.config/hypr/keybindings.lua`.
+
+| Key | Action |
+| --- | ------ |
+| Super + Return | Open terminal (kitty) |
+| Super + P | Powermenu |
+| Super + A | Open pacsea |
+| Super + Shift + P | Open Zed with `~/.config/hypr/monitors.lua` |
+| Super + L | Lock (hyprlock) |
+| Super + Tab | Toggle maximize window |
+| Super + F | Toggle fullscreen window |
+| Super + W | Close window |
+| Super + M | Exit Hyprland |
+| Super + E | Open file manager (thunar) |
+| Super + V | Toggle floating window |
+| Alt + Space | Open Rofi launcher |
+| Super + [1-0] | Focus workspace 1-10 |
+| Super + Shift + [1-0] | Move window to workspace 1-10 |
+| Super + S | Toggle special workspace "magic" |
+| Super + Shift + S | Move window to special workspace "magic" |
+| Super + Left Click | Drag window |
+| Super + Right Click | Resize window |
+
+## File manager (Thunar)
+
+I use **Thunar** as file explorer.
 I also install the following to render thumbnails correctly.
 
 ```bash
-sudo pacman -S ffmpegthumbnailer gst-libav gst-plugins-ugly ffmpeg-audio-thumbnailer
+sudo pacman -S thunar thunar-archive-plugin ffmpegthumbnailer tumbler
 ```
 
 ## Wallpapers
 
-To setup wallpapers, install [swww](https://github.com/LGFae/swww).
+Wallpapers are handled by [awww](https://codeberg.org/LGFae/awww) and Wallust generates the Hyprland colors.
 
 ```bash
-sudo pacman -S swww
+sudo pacman -S awww
+```
+
+After stowing `hyprland`, use `set-wp` to set the wallpaper per output and update Wallust:
+
+```bashl
+~/.config/hypr/scripts/set-wp /path/to/wallpaper.jpg eDP-1
+```
+
+Get output names with:
+
+```bash
+awww query
 ```
 
 ## Audio
