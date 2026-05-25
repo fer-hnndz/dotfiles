@@ -2,7 +2,7 @@
 @define-color color0 green;
 @define-color color9 red;
 * {
-    font-size: 14px;
+    font-size: 15px;
     font-family: "SF Pro Display";
 }
 window#waybar {
